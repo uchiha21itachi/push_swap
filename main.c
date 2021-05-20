@@ -1,11 +1,11 @@
 #include "Includes/push_swap.h"
 
 
-t_list	*list_init(void)
+t_node	*list_init(void)
 {
-	t_list	*list;
+	t_node	*list;
 
-	list = malloc(sizeof (t_list *));
+	list = malloc(sizeof (t_node *));
 	if (list == NULL)
 	{
 		printf("malloc error in list init\n");
@@ -14,10 +14,10 @@ t_list	*list_init(void)
 	return (list);
 }
 
-void	stack_iterator(t_list *stack)
+void	stack_iterator(t_node *stack)
 {
 	int		i;
-	t_list	*new;
+	t_node	*new;
 
 	i = 0;
 	if (!stack)
@@ -28,19 +28,19 @@ void	stack_iterator(t_list *stack)
 	new = stack;
 	while (new != NULL)
 	{
-		printf("stack content at [%d] is = [%d]\n", i, new->content);
+		printf("stack number at [%d] is = [%d]\n", i, new->number);
 		new = new->next;
 		i++;
 	}
 	return ;
 }
 
-void	check_args(char **argv, t_list *stackA)
+void	check_args(char **argv, t_node *stackA)
 {
 	char	*args;
 	int		number;
 	int		counter;
-	t_list	*new;
+	t_node	*new;
 
 	args = ft_strdup(argv[1]);
 	//Free args and check args pending
@@ -52,7 +52,7 @@ void	check_args(char **argv, t_list *stackA)
 		args = remove_space_digit(args, 'b');		
 		if (counter == 0)
 		{
-			stackA->content = number;
+			stackA->number = number;
 			stackA->next = NULL;
 		}
 		else
@@ -63,15 +63,15 @@ void	check_args(char **argv, t_list *stackA)
 		counter++;
 		args++;
 	}
-	printf("Number of total args - [%d]\n\n", counter);
+	printf("number of total args - [%d]\n\n", counter);
 	
 	stack_iterator(stackA);
 }	
 
 int		main(int argc, char **argv)
 {
-	t_list	*stackA;
-	t_list	*stackB;
+	t_node	*stackA;
+	t_node	*stackB;
 
 	if (argc < 2)
 	{

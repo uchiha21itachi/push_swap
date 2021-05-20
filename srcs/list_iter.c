@@ -1,9 +1,9 @@
 #include "../Includes/push_swap.h"
 
 
-t_list	*ft_lstlast(t_list *lst)
+t_node	*ft_lstlast(t_node *lst)
 {
-	t_list	*p;
+	t_node	*p;
 
 	p = lst;
 	if (lst == NULL)
@@ -13,10 +13,10 @@ t_list	*ft_lstlast(t_list *lst)
 	return (p);
 }
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_node *lst)
 {
 	int		l;
-	t_list	*new;
+	t_node	*new;
 
 	l = 0;
 	if (!lst)

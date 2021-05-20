@@ -6,17 +6,32 @@
 #include <stdlib.h>
 #include "../gnl/get_next_line.h"
 
-typedef struct	s_list
+typedef struct	s_move
 {
-	int			content;
-	struct s_list	*next;
-}				t_list;
+	char			*mov;
+	int				mov_num;
+	struct	s_move	*next;
+}				t_move;
 
-t_list			*ft_lstnew(int content);
-void			ft_lstadd_front(t_list **alst, t_list *new);
-int				ft_lstsize(t_list *lst);
-t_list			*ft_lstlast(t_list *lst);
-void			ft_lstadd_back(t_list **alst, t_list *new);
+typedef struct	s_node
+{
+	int				number;
+	struct	s_node	*next;
+	struct	s_node	*previous;
+}				t_node;
+
+typedef	struct s_stack
+{
+	struct 	s_node	*node;
+	struct	s_move	*moves;
+	int				length;
+}				t_stack;
+
+t_node			*ft_lstnew(int content);
+void			ft_lstadd_front(t_node **alst, t_node *new);
+int				ft_lstsize(t_node *lst);
+t_node			*ft_lstlast(t_node *lst);
+void			ft_lstadd_back(t_node **alst, t_node *new);
 int				ft_atoi(const char *str);
 char			*remove_space_digit(char *line, char c);
 
