@@ -41,24 +41,14 @@ void	print_stack(t_node *node)
 void	free_stack(t_stack *stack)
 {
 	t_node 	*new;
-	// t_node 	*temp;
 
-	new = ft_lstlast(stack->node);
-	
-	// while (new->previous != NULL)
-	// {
-		print_stack(new);
-		print_stack(stack->node);
-		
-
-
-		// new->previous->next = NULL;		
-		// temp = new;
-		// if (new->previous != NULL)
-			// new = new->previous;		
-		// temp->previous = NULL;
-		// free(temp);
-	// }
+	while (stack->node->next != NULL)
+	{
+		new = ft_lstlast(stack->node);
+		new->previous->next = NULL;
+		free(new);
+	}
+	free(stack->node);
 }
 
 
@@ -75,7 +65,7 @@ int		main(int argc, char **argv)
 	}
 	stackA = stack_init();
 	fill_stack(argv, stackA);
-	// print_stack(stackA->node);
+	print_stack(stackA->node);
 	free_stack(stackA);
 	free(stackA);
 
