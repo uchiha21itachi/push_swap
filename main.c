@@ -1,19 +1,5 @@
 #include "Includes/push_swap.h"
 
-
-t_node	*list_init(void)
-{
-	t_node	*list;
-
-	list = malloc(sizeof (t_node *));
-	if (list == NULL)
-	{
-		printf("malloc error in list init\n");
-		return (NULL);
-	}	
-	return (list);
-}
-
 void	stack_iterator(t_node *stack)
 {
 	int		i;
@@ -32,58 +18,66 @@ void	stack_iterator(t_node *stack)
 		new = new->next;
 		i++;
 	}
-	return ;
 }
 
-void	check_args(char **argv, t_node *stackA)
+
+void	print_stack(t_node *node)
 {
-	char	*args;
-	int		number;
-	int		counter;
-	t_node	*new;
+	int		i;
+	t_node 	*temp;
 
-	args = ft_strdup(argv[1]);
-	//Free args and check args pending
-
-	counter = 0;
-	while (*args != '\0')
+	temp = node;
+	i = 0;
+	while (temp)
 	{
-		number = ft_atoi(args);
-		args = remove_space_digit(args, 'b');		
-		if (counter == 0)
-		{
-			stackA->number = number;
-			stackA->next = NULL;
-		}
-		else
-		{
-			new = ft_lstnew(number);
-			ft_lstadd_back(&stackA, new);
-		}
-		counter++;
-		args++;
+		printf("[ [%d.] - Num-[%d]\tnode-[%p]\t next-[%p]\t prev-[%p]\n",i, temp->number, temp, temp->next, temp->previous);
+		i++;
+		temp = temp->next;
 	}
-	printf("number of total args - [%d]\n\n", counter);
+	printf("-------------------------------------------------------\n\n");
+}
+
+
+void	free_stack(t_stack *stack)
+{
+	t_node 	*new;
+	// t_node 	*temp;
+
+	new = ft_lstlast(stack->node);
 	
-	stack_iterator(stackA);
-}	
+	// while (new->previous != NULL)
+	// {
+		print_stack(new);
+		print_stack(stack->node);
+		
+
+
+		// new->previous->next = NULL;		
+		// temp = new;
+		// if (new->previous != NULL)
+			// new = new->previous;		
+		// temp->previous = NULL;
+		// free(temp);
+	// }
+}
+
 
 int		main(int argc, char **argv)
 {
-	t_node	*stackA;
-	t_node	*stackB;
+	t_stack		*stackA;
+	// t_stack		*stackB;
 
-	if (argc < 2)
+	(void)argv;
+	if (argc != 2)
 	{
 		printf("Error - Please enter ARG as arguments\n");
 		return (0);
 	}
-	stackA = list_init();
-	stackB = list_init();
-	check_args(argv, stackA);
-	printf("Successfully exited check args ....\n");
-	
-	// (void)stackA;
-	(void)stackB;
+	stackA = stack_init();
+	fill_stack(argv, stackA);
+	// print_stack(stackA->node);
+	free_stack(stackA);
+	free(stackA);
+
 	return (0);
 }

@@ -24,7 +24,6 @@ void	ft_lstadd_front(t_node **alst, t_node *new)
 	*alst = new;
 }
 
-
 void	ft_lstadd_back(t_node **alst, t_node *new)
 {
 	t_node *ls;
@@ -39,5 +38,19 @@ void	ft_lstadd_back(t_node **alst, t_node *new)
 	}
 	while (ls->next != NULL)
 		ls = ls->next;
+	new->previous = ls;
 	ls->next = new;
+}
+
+
+t_node	*ft_lstlast(t_node *lst)
+{
+	t_node	*p;
+
+	p = lst;
+	if (lst == NULL)
+		return (NULL);
+	while (p->next != NULL)
+		p = p->next;
+	return (p);
 }

@@ -7,6 +7,7 @@ RM = rm -f   # rm command
 SRCS = main.c\
 srcs/list_crud.c \
 srcs/list_iter.c \
+srcs/stack_utils.c \
 libft/ft_atoi.c \
 
 

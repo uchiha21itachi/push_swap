@@ -34,6 +34,9 @@ t_node			*ft_lstlast(t_node *lst);
 void			ft_lstadd_back(t_node **alst, t_node *new);
 int				ft_atoi(const char *str);
 char			*remove_space_digit(char *line, char c);
+t_stack			*stack_init(void);
+void			fill_stack(char **argv, t_stack *stack);
+
 
 #endif
 

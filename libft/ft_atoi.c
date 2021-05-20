@@ -40,8 +40,6 @@ char	*remove_space_digit(char *line, char c)
 	return (line);
 }
 
-
-
 int		ft_atoi(const char *str)
 {
 	//Check atoi for int max and min pending
@@ -69,65 +67,3 @@ int		ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// static	int	check_num(long num, int neg)
-// {
-// 	if (neg > 0 && num > 2147483647)
-// 		return (-1);
-// 	else if (neg < 0 && num > 2147483648)
-// 		return (0);
-// 	return (num * neg);
-// }
-
-// int			ft_atoi(const char *str)
-// {
-// 	long	num;
-// 	int		neg;
-
-// 	num = 0;
-// 	neg = 1;
-// 	printf("str in atoi - [%s]\n", str);
-// 	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\v'
-// 	|| *str == '\f' || *str == '\r')
-// 		str++;
-// 	if (*str == 45 || *str == 43)
-// 	{
-// 		if (*str == 45)
-// 			neg = -1;
-// 		str++;
-// 	}
-// 	while (*str >= '0' && *str <= '9')
-// 	{
-// 		num = num * 10 + (*str - 48);
-// 		if (num > 21474836470)
-// 			break ;
-// 		str++;
-// 	}
-// 	printf("str in atoi - [%s]\n", str);
-// 	num = check_num(num, neg);
-// 	return (num);
-// }
-
-
