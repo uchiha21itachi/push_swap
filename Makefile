@@ -8,7 +8,10 @@ SRCS = main.c\
 srcs/list_crud.c \
 srcs/list_iter.c \
 srcs/stack_utils.c \
+srcs/checker.c \
+srcs/print_all.c \
 libft/ft_atoi.c \
+libft/ft_strncmp.c \
 
 
 GNL_SRCS = gnl/get_next_line.c \

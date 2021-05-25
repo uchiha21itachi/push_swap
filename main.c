@@ -1,42 +1,5 @@
 #include "Includes/push_swap.h"
 
-void	stack_iterator(t_node *stack)
-{
-	int		i;
-	t_node	*new;
-
-	i = 0;
-	if (!stack)
-	{
-		printf("Problem in stack returning from function now\n");
-		return;
-	}
-	new = stack;
-	while (new != NULL)
-	{
-		printf("stack number at [%d] is = [%d]\n", i, new->number);
-		new = new->next;
-		i++;
-	}
-}
-
-
-void	print_stack(t_node *node)
-{
-	int		i;
-	t_node 	*temp;
-
-	temp = node;
-	i = 0;
-	while (temp)
-	{
-		printf("[ [%d.] - Num-[%d]\tnode-[%p]\t next-[%p]\t prev-[%p]\n",i, temp->number, temp, temp->next, temp->previous);
-		i++;
-		temp = temp->next;
-	}
-	printf("-------------------------------------------------------\n\n");
-}
-
 
 void	free_stack(t_stack *stack)
 {
@@ -55,7 +18,7 @@ void	free_stack(t_stack *stack)
 int		main(int argc, char **argv)
 {
 	t_stack		*stackA;
-	// t_stack		*stackB;
+	t_stack		*stackB;
 
 	(void)argv;
 	if (argc != 2)
@@ -64,10 +27,13 @@ int		main(int argc, char **argv)
 		return (0);
 	}
 	stackA = stack_init();
+	stackB = stack_init();
 	fill_stack(argv, stackA);
-	print_stack(stackA->node);
+	printf("length stack A - [%d]\n", stackA->length);
+	printf("length stack B - [%d]\n", stackB->length);
+	checker("SA", stackA, stackB);
 	free_stack(stackA);
-	free(stackA);
-
+	free(stackA);		
+	free(stackB);		
 	return (0);
 }

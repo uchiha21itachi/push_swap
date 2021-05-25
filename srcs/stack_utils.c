@@ -11,6 +11,7 @@ t_stack	*stack_init(void)
 		return (NULL);
 	}
 	stack->length = 0;
+	stack->node = NULL;
 	return (stack);
 }
 

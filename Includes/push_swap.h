@@ -36,6 +36,11 @@ int				ft_atoi(const char *str);
 char			*remove_space_digit(char *line, char c);
 t_stack			*stack_init(void);
 void			fill_stack(char **argv, t_stack *stack);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+void			checker(char *ins, t_stack *stackA, t_stack *stackB);
+void			print_stack(t_node *node);
+void			print_numbers(t_node *list, char x);
+void			print_desc(t_stack *stack);
 
 
 #endif
