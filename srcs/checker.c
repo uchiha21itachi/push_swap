@@ -2,44 +2,40 @@
 
 void    swap_A(t_stack *stackA, t_stack *stackB)
 {
-    // t_node  *newA;
+    t_node  *newA;
     // t_node  *newB;
 
     (void)stackB;
     (void)stackA;
-    print_desc(stackA);
 
-    // newA = ft_lstlast(stackA->node)->previous;
-    // printf("--------Step 1------------\n");
-    // printf("---------------newA----------\n");
-    // print_stack(newA);
-    // printf("--------------stackA----------\n");
-    // print_stack(stackA->node);
+    printf("\n----------stackA--------\n");
+    print_desc(stackA->node);
 
+    newA = ft_lstlast(stackA->node)->previous;
+    printf("\n----------newA--------\n");
+    print_desc(newA);
 
-    // printf("\n\n--------Step 2------------\n");
-    // ft_lstlast(stackA->node)->previous = newA->previous;
-    // printf("---------------newA----------\n");
-    // print_stack(newA);
-    // printf("--------------stackA----------\n");
-    // print_stack(stackA->node);
+    ft_lstlast(stackA->node)->previous = newA->previous;
+    printf("\n----------stackA--------\n");
+    print_desc(stackA->node);
 
-
-    // printf("\n\n--------Step 3------------\n");
-    // newA->previous->next = ft_lstlast(stackA->node);
-    // printf("---------------newA----------\n");
-    // print_stack(newA);
-    // printf("--------------stackA----------\n");
-    // print_stack(stackA->node);
+    newA->previous->next = ft_lstlast(stackA->node);
+    printf("\n----------newA--------\n");
+    print_desc(newA);
 
 
-    // printf("\n\n--------Step 4------------\n");
-    // newA->previous = newA->previous->next;
-    // printf("---------------newA----------\n");
-    // print_stack(newA);
-    // printf("--------------stackA----------\n");
-    // print_stack(stackA->node);
+    newA->previous = newA->previous->next;
+    printf("\n----------newA--------\n");
+    print_desc(newA);
 
+    newA->previous->next = newA;
+    newA->next = NULL;
+    printf("\n----------newA--------\n");
+    print_desc(newA);
+
+
+    printf("\n----------stackA--------\n");
+    print_desc(stackA->node);
 
     // newA = stackA->node->next;
     // newA->previous = NULL;
@@ -47,7 +43,6 @@ void    swap_A(t_stack *stackA, t_stack *stackB)
     // newB->next = NULL;
     // newB = NULL;
     // newA = NULL;
-    // print_numbers(newA, 'C');
 }
 
 

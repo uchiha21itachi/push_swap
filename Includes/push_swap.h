@@ -40,7 +40,7 @@ int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			checker(char *ins, t_stack *stackA, t_stack *stackB);
 void			print_stack(t_node *node);
 void			print_numbers(t_node *list, char x);
-void			print_desc(t_stack *stack);
+void			print_desc(t_node *node);
 
 
 #endif

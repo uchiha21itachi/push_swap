@@ -37,13 +37,13 @@ void		fill_stack(char **argv, t_stack *stack)
 
 	args = ft_strdup(argv[1]);
 	temps = args;
-	printf("args - [%s]\n", args);
+	// printf("args - [%s]\n", temps);
 	while (*temps != '\0')
 	{
 		number = ft_atoi(temps);
 		temps = remove_space_digit(temps, 'b');
 		stack = insert_number(number, stack);
-		(void)stack;
+		// (void)stack;
 	}
 	free(args);
 }	

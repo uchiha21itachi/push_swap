@@ -11,7 +11,8 @@ void	free_stack(t_stack *stack)
 		new->previous->next = NULL;
 		free(new);
 	}
-	free(stack->node);
+	if (stack->node != NULL)
+		free(stack->node);
 }
 
 
@@ -26,14 +27,17 @@ int		main(int argc, char **argv)
 		printf("Error - Please enter ARG as arguments\n");
 		return (0);
 	}
+	(void)stackA;
+	(void)stackB;
+
 	stackA = stack_init();
 	stackB = stack_init();
 	fill_stack(argv, stackA);
-	printf("length stack A - [%d]\n", stackA->length);
-	printf("length stack B - [%d]\n", stackB->length);
+	// printf("length stack A - [%d]\n", stackA->length);
+	// printf("length stack B - [%d]\n", stackB->length);
 	checker("SA", stackA, stackB);
 	free_stack(stackA);
-	free(stackA);		
+	free(stackA);	
 	free(stackB);		
 	return (0);
 }

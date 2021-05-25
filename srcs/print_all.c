@@ -40,57 +40,21 @@ void	print_stack(t_node *node)
 	printf("-------------------------------------------------------\n\n");
 }
 
-
-void	print_desc(t_stack *stack)
+void	print_desc(t_node *node)
 {
-	int			next;
-	int			now;
-	int			prev;
-	int			pn;
-	int			nn;
-	t_stack		*temp_stack;
+	t_node	*temp;
 
-	if (stack->length == 0)
+	temp = node;
+	while (temp)
 	{
-		printf("Stack doesnot have a list\n\n");
-		return ;
-	}
-
-	if (stack->node == NULL)
-	{
-		printf("Stack node is null \n");
-		return;
-	}
-	temp_stack = stack;
-	next = -1;
-	prev = -1;
-	now = -1;
-	nn = 0;
-	pn = 0;
-	while (temp_stack->node != NULL)
-	{
-		pn = 0;
-		nn = 0;
-		now = temp_stack->node->number;
-		if (temp_stack->node->next == NULL)
-			nn = 1;
-		else
-			next = temp_stack->node->next->number;
-
-		if (temp_stack->node->previous == NULL)
-			pn = 1;
-		else
-			prev = temp_stack->node->previous->number;
-		
-		if (pn == 1 && nn == 1)
-			printf("[NULL]<-----[%d]----->[NULL]\n", now);
-		else if (pn == 1 && nn != 1)
-			printf("[NULL]<-----[%d]----->[%d]\n",now, next);
-		else if (pn != 1 && nn == 1)
-			printf("[%d]<-----[%d]----->[NULL]\n",prev ,now);
-		else
-			printf("[%d]<-----[%d]----->[%d]\n",prev ,now, next);
-
-		temp_stack->node = temp_stack->node->next;
+		if (temp->previous != NULL && temp->next != NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", temp->previous->number, temp->number, temp->next->number);
+		else if (temp->previous == NULL && temp->next != NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", temp->previous, temp->number, temp->next->number);
+		else if (temp->previous != NULL && temp->next == NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", temp->previous->number, temp->number, temp->next);
+		else if (temp->previous == NULL && temp->next == NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", temp->previous, temp->number, temp->next);
+		temp = temp->next;
 	}
 }
