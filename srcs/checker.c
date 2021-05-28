@@ -6,9 +6,19 @@ void    swap_A(t_stack *stackA, t_stack *stackB)
     // t_node  *newB;
 
     (void)stackB;
-    (void)stackA;
-
-    newA = ft_lstlast(stackA->node)->previous;    
+    
+    if (stackA->length < 2)
+        return ; 
+    newA = ft_lstlast(stackA->node)->previous;
+    if (stackA->length == 2)
+    {
+        newA->next->previous = NULL;
+        newA->previous = newA->next;
+        newA->next = NULL;
+        newA->previous->next = newA;
+        stackA->node = newA->previous;
+        return ;
+    }
     ft_lstlast(stackA->node)->previous = newA->previous;
     newA->previous->next = ft_lstlast(stackA->node);
     newA->previous = newA->previous->next;
@@ -19,7 +29,7 @@ void    swap_A(t_stack *stackA, t_stack *stackB)
 
 void     checker(char *ins, t_stack *stackA, t_stack *stackB)
 {
-    printf("isntruction to execute - [%s]\n", ins);
+    printf("\n\ninstruction to execute - [%s]\n", ins);
     if (!ft_strncmp(ins, "SA", 2))
         swap_A(stackA, stackB);
 }

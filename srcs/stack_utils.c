@@ -23,7 +23,7 @@ t_stack		*insert_number(int num, t_stack *stack)
 	if (stack->length == 0)
 		stack->node = new;
 	else
-		ft_lstadd_back(&stack->node, new);
+		ft_lstadd_front(&stack->node, new);
 	stack->length++;
 
 	return(stack);

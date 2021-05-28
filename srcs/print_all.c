@@ -24,12 +24,12 @@ void	print_numbers(t_node *list, char x)
 	}
 }
 
-void	print_stack(t_node *node)
+void	print_stack(t_stack *stack)
 {
 	int		i;
 	t_node 	*temp;
 
-	temp = node;
+	temp = stack->node;
 	i = 0;
 	while (temp)
 	{

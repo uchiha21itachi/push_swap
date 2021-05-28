@@ -32,14 +32,15 @@ int		main(int argc, char **argv)
 
 	stackA = stack_init();
 	stackB = stack_init();
-	fill_stack(argv, stackA);
-	// printf("length stack A - [%d]\n", stackA->length);
-	print_desc(stackA->node);
-	checker("SA", stackA, stackB);
-	print_desc(stackA->node);
-	checker("SA", stackA, stackB);
-	print_desc(stackA->node);
+	printf("args - [%s]\n", argv[1]);
+
+	// fill_stack(argv, stackA);
+	// print_desc(stackA->node);
+	// checker("SA", stackA, stackB);
+	// print_desc(stackA->node);
+
 	free_stack(stackA);
+	printf("looks good\n");
 	free(stackA);	
 	free(stackB);		
 	return (0);
