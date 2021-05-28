@@ -8,41 +8,12 @@ void    swap_A(t_stack *stackA, t_stack *stackB)
     (void)stackB;
     (void)stackA;
 
-    printf("\n----------stackA--------\n");
-    print_desc(stackA->node);
-
-    newA = ft_lstlast(stackA->node)->previous;
-    printf("\n----------newA--------\n");
-    print_desc(newA);
-
+    newA = ft_lstlast(stackA->node)->previous;    
     ft_lstlast(stackA->node)->previous = newA->previous;
-    printf("\n----------stackA--------\n");
-    print_desc(stackA->node);
-
     newA->previous->next = ft_lstlast(stackA->node);
-    printf("\n----------newA--------\n");
-    print_desc(newA);
-
-
     newA->previous = newA->previous->next;
-    printf("\n----------newA--------\n");
-    print_desc(newA);
-
     newA->previous->next = newA;
     newA->next = NULL;
-    printf("\n----------newA--------\n");
-    print_desc(newA);
-
-
-    printf("\n----------stackA--------\n");
-    print_desc(stackA->node);
-
-    // newA = stackA->node->next;
-    // newA->previous = NULL;
-    // newB = stackA->node;
-    // newB->next = NULL;
-    // newB = NULL;
-    // newA = NULL;
 }
 
 
