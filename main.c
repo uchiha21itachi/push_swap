@@ -34,13 +34,11 @@ int		main(int argc, char **argv)
 	stackB = stack_init();
 	printf("args - [%s]\n", argv[1]);
 
-	// fill_stack(argv, stackA);
-	// print_desc(stackA->node);
-	// checker("SA", stackA, stackB);
-	// print_desc(stackA->node);
+	fill_stack(argv, stackA);
+
+	checker("SA", stackA, stackB);
 
 	free_stack(stackA);
-	printf("looks good\n");
 	free(stackA);	
 	free(stackB);		
 	return (0);

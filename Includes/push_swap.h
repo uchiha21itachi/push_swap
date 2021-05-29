@@ -28,10 +28,10 @@ typedef	struct s_stack
 }				t_stack;
 
 t_node			*ft_lstnew(int content);
-void			ft_lstadd_front(t_node **alst, t_node *new);
+void			ft_lstadd_front(t_stack *stack, t_node *new);
 int				ft_lstsize(t_node *lst);
 t_node			*ft_lstlast(t_node *lst);
-void			ft_lstadd_back(t_node **alst, t_node *new);
+void			ft_lstadd_back(t_stack *stack, t_node *new);
 int				ft_atoi(const char *str);
 char			*remove_space_digit(char *line, char c);
 t_stack			*stack_init(void);
@@ -41,6 +41,7 @@ void			checker(char *ins, t_stack *stackA, t_stack *stackB);
 void			print_stack(t_stack *stack);
 void			print_numbers(t_node *list, char x);
 void			print_desc(t_node *node);
+void			print_desc_rev(t_node *node);
 void			free_stack(t_stack *stack);
 
 

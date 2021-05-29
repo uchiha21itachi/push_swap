@@ -2,3 +2,32 @@ ARG=`ruby -e "puts (0..3).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker
 
 
 ARG=`ruby -e "puts (0..3).to_a.join(' ')"`; valgrind --leak-check=full --show-leak-kinds=definite --track-origins=yes  --read-var-info=yes ./a.out $ARG
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    If instertion method => ft_lstadd_back 
+        reverse the printing order of link list use temp = temp->previous
+    If insertion method => ft_lstadd_front
+        swap needs to be changed
+*/

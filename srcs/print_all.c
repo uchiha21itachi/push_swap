@@ -58,3 +58,23 @@ void	print_desc(t_node *node)
 		temp = temp->next;
 	}
 }
+
+
+void	print_desc_rev(t_node *node)
+{
+	t_node	*temp;
+
+	temp = ft_lstlast(node);
+	while (temp)
+	{
+		if (temp->previous != NULL && temp->next != NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", temp->previous->number, temp->number, temp->next->number);
+		else if (temp->previous == NULL && temp->next != NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", temp->previous, temp->number, temp->next->number);
+		else if (temp->previous != NULL && temp->next == NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", temp->previous->number, temp->number, temp->next);
+		else if (temp->previous == NULL && temp->next == NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", temp->previous, temp->number, temp->next);
+		temp = temp->previous;
+	}
+}

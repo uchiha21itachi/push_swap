@@ -23,7 +23,7 @@ t_stack		*insert_number(int num, t_stack *stack)
 	if (stack->length == 0)
 		stack->node = new;
 	else
-		ft_lstadd_front(&stack->node, new);
+		ft_lstadd_front(stack, new);
 	stack->length++;
 
 	return(stack);
@@ -37,13 +37,11 @@ void		fill_stack(char **argv, t_stack *stack)
 
 	args = ft_strdup(argv[1]);
 	temps = args;
-	// printf("args - [%s]\n", temps);
 	while (*temps != '\0')
 	{
 		number = ft_atoi(temps);
 		temps = remove_space_digit(temps, 'b');
 		stack = insert_number(number, stack);
-		// (void)stack;
 	}
 	free(args);
 }	

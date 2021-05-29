@@ -14,27 +14,30 @@ t_node	*ft_lstnew(int number)
 	return (new);
 }
 
-void	ft_lstadd_front(t_node **alst, t_node *new)
+void	ft_lstadd_front(t_stack *stack, t_node *new)
 {
-	if (!alst)
+	if (new == NULL)
 		return ;
-	if (new == 0)
-		return ;
-	new->next = *alst;
-	new->next->previous = new;
-	*alst = new;
+	if (stack->node != NULL)
+	{
+		new->next = stack->node;
+		stack->node->previous = new;
+		stack->node = new;
+	}
+	else
+		stack->node = new;
 }
 
-void	ft_lstadd_back(t_node **alst, t_node *new)
+void	ft_lstadd_back(t_stack *stack, t_node *new)
 {
 	t_node *ls;
-	if (!alst)
+	if (!stack->node)
 		return ;
-	if (*alst)
-		ls = *alst;
+	if (stack->node)
+		ls = stack->node;
 	else
 	{
-		*alst = new;
+		stack->node = new;
 		return ;
 	}
 	while (ls->next != NULL)
