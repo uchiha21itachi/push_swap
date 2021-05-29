@@ -43,7 +43,7 @@ void	print_stack(t_stack *stack)
 void	print_desc(t_node *node)
 {
 	t_node	*temp;
-
+	
 	temp = node;
 	while (temp)
 	{
@@ -64,6 +64,7 @@ void	print_desc_rev(t_node *node)
 {
 	t_node	*temp;
 
+	printf("---------------------Start----------\n\n");
 	temp = ft_lstlast(node);
 	while (temp)
 	{
@@ -77,4 +78,5 @@ void	print_desc_rev(t_node *node)
 			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", temp->previous, temp->number, temp->next);
 		temp = temp->previous;
 	}
+	printf("---------------------END----------\n\n");
 }

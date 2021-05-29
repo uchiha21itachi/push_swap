@@ -12,6 +12,7 @@ t_stack	*stack_init(void)
 	}
 	stack->length = 0;
 	stack->node = NULL;
+	stack->moves = NULL;
 	return (stack);
 }
 

@@ -1,67 +1,50 @@
 #include "Includes/push_swap.h"
 
-// void    swap_A(t_stack *stackA, t_stack *stackB)
-// {
-//     t_node  *newA;
-//     // t_node  *newB;
 
-//     (void)stackB;
-    
-//     if (stackA->length < 2)
-//         return ; 
-//     newA = ft_lstlast(stackA->node)->previous;
-//     if (stackA->length == 2)
-//     {
-//         newA->next->previous = NULL;
-//         newA->previous = newA->next;
-//         newA->next = NULL;
-//         newA->previous->next = newA;
-//         stackA->node = newA->previous;
-//         return ;
-//     }
-//     ft_lstlast(stackA->node)->previous = newA->previous;
-//     newA->previous->next = ft_lstlast(stackA->node);
-//     newA->previous = newA->previous->next;
-//     newA->previous->next = newA;
-//     newA->next = NULL;
-// }
-
-void    swap_A(t_stack *stackA, t_stack *stackB)
+void    swap_A_B(t_stack *stackA, t_stack *stackB, int n)
 {
     t_node  *newA;
-    // t_node  *newB;
 
-    (void)stackB;
-    
+    if (n == 1)
+        swap_A_B(stackB, stackA, 0);
     if (stackA->length < 2)
-        return ; 
+        return ;
     newA = stackA->node->next;
-    // if (stackA->length == 2)
-    // {
-    //     newA->next->previous = NULL;
-    //     newA->previous = newA->next;
-    //     newA->next = NULL;
-    //     newA->previous->next = newA;
-    //     stackA->node = newA->previous;
-    //     return ;
-    // }
-    // newA->previous = stackA->node;
-    // stackA->node->next->previous = NULL;
-    print_desc(stackA->node);
-    printf("\n\n");
-    print_desc(newA);
-    // newA->previous->next = newA;
-    // printf("\n\n");
-    // print_desc(stackA->node);
-    // printf("\n\n");
-    // print_desc(newA);
+    if (stackA->length == 2)
+    {
+        newA->next = stackA->node;
+        stackA->node->next = NULL;
+        newA->previous = NULL;
+        stackA->node->previous = newA;
+        stackA->node = newA;
+        return ;
+    }
+    stackA->node->next = newA->next;
+    newA->next->previous = stackA->node;
+    newA->next = newA->previous;
+    newA->previous = NULL;
+    stackA->node->previous = newA;
+    stackA->node = newA;
 }
 
+void     push_B(t_stack *stackA, t_stack *stackB)
+{
+    t_node  *new;
 
+    new = stackA->node->next;
+    new->previous = NULL;
+    stackA->node->next = NULL;
+    ft_lstadd_front(stackB, stackA->node);
+    stackA->node = new;
+}
 
-void     checker(char *ins, t_stack *stackA, t_stack *stackB)
+void     exec(char *ins, t_stack *stackA, t_stack *stackB)
 {
     printf("\n\ninstruction to execute - [%s]\n", ins);
     if (!ft_strncmp(ins, "SA", 2))
-        swap_A(stackA, stackB);
+        swap_A_B(stackA, stackB, 0);
+    else if (!ft_strncmp(ins, "SB", 2))
+        swap_A_B(stackA, stackB, 1);
+    else if (!ft_strncmp(ins, "PB", 2))
+        push_B(stackA, stackB);
 }
