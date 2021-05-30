@@ -7,6 +7,7 @@ void    swap_A_B(t_stack *stackA, t_stack *stackB, int n)
 
     if (n == 1)
         swap_A_B(stackB, stackA, 0);
+  
     if (stackA->length < 2)
         return ;
     newA = stackA->node->next;
@@ -27,15 +28,38 @@ void    swap_A_B(t_stack *stackA, t_stack *stackB, int n)
     stackA->node = newA;
 }
 
-void     push_B(t_stack *stackA, t_stack *stackB)
+void     push_A_B(t_stack *stackA, t_stack *stackB)
 {
     t_node  *new;
 
-    new = stackA->node->next;
-    new->previous = NULL;
+    if (stackA->length < 2)
+    {
+        new = stackA->node;
+        ft_lstadd_front(stackB, new);        
+        stackA->node = NULL;
+    }
+    else
+    {
+        new = stackA->node->next;
+        new->previous = NULL;
+        stackA->node->next = NULL;
+        ft_lstadd_front(stackB, stackA->node);
+        stackA->node = new;
+    }
+    stackA->length--;
+    stackB->length++;
+}
+
+void     rotate_ra(t_stack *stackA)
+{   
+    t_node *newA;
+
+    newA = stackA->node->next;
+    stackA->node->previous = ft_lstlast(newA);
+    ft_lstlast(newA)->next = newA->previous;
     stackA->node->next = NULL;
-    ft_lstadd_front(stackB, stackA->node);
-    stackA->node = new;
+    newA->previous = NULL;
+    stackA->node = newA;
 }
 
 void     exec(char *ins, t_stack *stackA, t_stack *stackB)
@@ -45,6 +69,12 @@ void     exec(char *ins, t_stack *stackA, t_stack *stackB)
         swap_A_B(stackA, stackB, 0);
     else if (!ft_strncmp(ins, "SB", 2))
         swap_A_B(stackA, stackB, 1);
+    else if (!ft_strncmp(ins, "PA", 2))
+        push_A_B(stackB, stackA);
     else if (!ft_strncmp(ins, "PB", 2))
-        push_B(stackA, stackB);
+        push_A_B(stackA, stackB);
+    else if (!ft_strncmp(ins, "RA", 2))
+        rotate_ra(stackA);
+    else if (!ft_strncmp(ins, "RB", 2))
+        rotate_ra(stackB);
 }

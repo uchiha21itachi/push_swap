@@ -31,6 +31,7 @@ void	print_stack(t_stack *stack)
 
 	temp = stack->node;
 	i = 0;
+	printf("stack length -> [%d]\n", stack->length);
 	while (temp)
 	{
 		printf("[ [%d.] - Num-[%d]\tnode-[%p]\t next-[%p]\t prev-[%p]\n",i, temp->number, temp, temp->next, temp->previous);
@@ -40,43 +41,40 @@ void	print_stack(t_stack *stack)
 	printf("-------------------------------------------------------\n\n");
 }
 
-void	print_desc(t_node *node)
+void	print_both(t_node *stackA, t_node *stackB)
 {
-	t_node	*temp;
+	t_node	*tempA;
+	t_node	*tempB;
 	
-	temp = node;
-	while (temp)
+	tempA = stackA;
+	printf("--------------StackA--------------------\n");
+	while (tempA)
 	{
-		if (temp->previous != NULL && temp->next != NULL)
-			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", temp->previous->number, temp->number, temp->next->number);
-		else if (temp->previous == NULL && temp->next != NULL)
-			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", temp->previous, temp->number, temp->next->number);
-		else if (temp->previous != NULL && temp->next == NULL)
-			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", temp->previous->number, temp->number, temp->next);
-		else if (temp->previous == NULL && temp->next == NULL)
-			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", temp->previous, temp->number, temp->next);
-		temp = temp->next;
+		if (tempA->previous != NULL && tempA->next != NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", tempA->previous->number, tempA->number, tempA->next->number);
+		else if (tempA->previous == NULL && tempA->next != NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", tempA->previous, tempA->number, tempA->next->number);
+		else if (tempA->previous != NULL && tempA->next == NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", tempA->previous->number, tempA->number, tempA->next);
+		else if (tempA->previous == NULL && tempA->next == NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", tempA->previous, tempA->number, tempA->next);
+		tempA = tempA->next;
 	}
-}
 
-
-void	print_desc_rev(t_node *node)
-{
-	t_node	*temp;
-
-	printf("---------------------Start----------\n\n");
-	temp = ft_lstlast(node);
-	while (temp)
+	printf("--------------StackB--------------------\n");
+	tempB = stackB;
+	while (tempB)
 	{
-		if (temp->previous != NULL && temp->next != NULL)
-			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", temp->previous->number, temp->number, temp->next->number);
-		else if (temp->previous == NULL && temp->next != NULL)
-			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", temp->previous, temp->number, temp->next->number);
-		else if (temp->previous != NULL && temp->next == NULL)
-			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", temp->previous->number, temp->number, temp->next);
-		else if (temp->previous == NULL && temp->next == NULL)
-			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", temp->previous, temp->number, temp->next);
-		temp = temp->previous;
+		if (tempB->previous != NULL && tempB->next != NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", tempB->previous->number, tempB->number, tempB->next->number);
+		else if (tempB->previous == NULL && tempB->next != NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", tempB->previous, tempB->number, tempB->next->number);
+		else if (tempB->previous != NULL && tempB->next == NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", tempB->previous->number, tempB->number, tempB->next);
+		else if (tempB->previous == NULL && tempB->next == NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", tempB->previous, tempB->number, tempB->next);
+		tempB = tempB->next;
 	}
-	printf("---------------------END----------\n\n");
+
+	printf("\n-----------------XXXXXXXXXXXXXXXXXXX----------------\n\n\n");
 }

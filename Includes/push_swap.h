@@ -40,8 +40,7 @@ int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			exec(char *ins, t_stack *stackA, t_stack *stackB);
 void			print_stack(t_stack *stack);
 void			print_numbers(t_node *list, char x);
-void			print_desc(t_node *node);
-void			print_desc_rev(t_node *node);
+void			print_both(t_node *stackA, t_node *stackB);
 void			free_stack(t_stack *stack);
 
 
