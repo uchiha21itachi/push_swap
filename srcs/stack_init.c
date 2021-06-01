@@ -24,7 +24,7 @@ t_stack		*insert_number(int num, t_stack *stack)
 	if (stack->length == 0)
 		stack->node = new;
 	else
-		ft_lstadd_front(stack, new);
+		ft_lstadd_back(stack, new);
 	stack->length++;
 
 	return(stack);
@@ -46,3 +46,31 @@ void		fill_stack(char **argv, t_stack *stack)
 	}
 	free(args);
 }	
+
+void	add_move_back(t_stack *stackA, t_move *move)
+{
+	t_move	*new;
+
+	new = stackA->moves;
+	while (new->next != NULL)
+		new = new->next;
+	move->mov_num = new->mov_num + 1;
+	new->next = move;
+}
+
+void	update_moves(t_stack *stackA, char *ins)
+{
+	t_move	*move;
+
+	move = new_move();
+	if (move == NULL)
+		return;
+	move->ins = ft_strdup(ins);
+	if (stackA->moves == NULL)
+	{
+		move->mov_num = 1;
+		stackA->moves = move;
+		return;
+	}
+	add_move_back(stackA, move);
+}

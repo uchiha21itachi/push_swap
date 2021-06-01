@@ -78,3 +78,17 @@ void	print_both(t_node *stackA, t_node *stackB)
 
 	printf("\n-----------------XXXXXXXXXXXXXXXXXXX----------------\n\n\n");
 }
+
+void	print_moves(t_move *move)
+{
+	t_move	*temp;
+
+	temp = move;
+	printf("Showing all moves\n\n");
+	while (temp)
+	{
+		printf("[%d] - [%s]\n", temp->mov_num, temp->ins);
+		temp = temp->next;
+	}
+	printf("-------------------------\n\n\n");
+}

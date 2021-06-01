@@ -4,15 +4,16 @@ CFLAGS = -Wall -Werror -Wextra -I. -c  # C flags
 RM = rm -f   # rm command
 
 
-SRCS = main.c\
+SRCS = srcs/push_swap.c\
+srcs/stack_init.c \
 srcs/list_crud.c \
-srcs/list_iter.c \
-srcs/stack_utils.c \
-srcs/checker.c \
+srcs/executor.c \
+srcs/free.c \
 srcs/print_all.c \
-libft/ft_atoi.c \
-libft/ft_strncmp.c \
 
+LIBFT_SRCS = libft/ft_atoi.c \
+libft/ft_strncmp.c \
+ 
 
 GNL_SRCS = gnl/get_next_line.c \
 gnl/get_next_line_utils.c \
@@ -22,21 +23,23 @@ OBJS = $(SRCS:.c=.o)
 
 GNL_OBJS = $(GNL_SRCS:.c=.o)
 
+LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
+
 all: ${NAME}
 	@printf "Makefile starts\n"
 
-$(NAME): $(OBJS) $(GNL_OBJS)
-	ar rcs $@ $(OBJS) $(GNL_OBJS)
-	$(CC) $(NAME)
+$(NAME): $(OBJS) $(GNL_OBJS) $(LIBFT_OBJS)
+	ar rcs $@ $(OBJS) $(GNL_OBJS) $(LIBFT_OBJS)
+	$(CC) $(NAME) -o push_swap
 # $(OBJS):$(SRCS)
 	# $(CC) $(CFLAGS) $(SRCS)
 
 clean:
-	rm -f $(OBJS) $(GNL_OBJS)
+	$(RM) $(OBJS) $(GNL_OBJS) $(LIBFT_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
-	rm a.out
+	rm push_swap
 re: fclean all
 
 # I use .PHONY to make sure that gnu make will still run even if files called

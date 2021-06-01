@@ -1,6 +1,19 @@
 #include "../Includes/push_swap.h"
 
 
+t_move	*new_move(void)
+{
+	t_move	*move;
+
+	move = (t_move *)malloc(sizeof(t_move));
+	if (move == 0)
+		return (NULL);
+	move->mov_num = -1;
+	move->next = NULL;
+	move->ins = NULL;
+	return (move);
+}
+
 t_node	*ft_lstnew(int number)
 {
 	t_node	*new;
@@ -31,7 +44,8 @@ void	ft_lstadd_front(t_stack *stack, t_node *new)
 void	ft_lstadd_back(t_stack *stack, t_node *new)
 {
 	t_node *ls;
-	if (!stack->node)
+
+	if (new == NULL)
 		return ;
 	if (stack->node)
 		ls = stack->node;

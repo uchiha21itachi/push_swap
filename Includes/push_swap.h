@@ -8,7 +8,7 @@
 
 typedef struct	s_move
 {
-	char			*mov;
+	char			*ins;
 	int				mov_num;
 	struct	s_move	*next;
 }				t_move;
@@ -23,7 +23,7 @@ typedef struct	s_node
 typedef	struct s_stack
 {
 	struct 	s_node	*node;
-	struct	s_move	*moves;
+	struct  s_move	*moves;
 	int				length;
 }				t_stack;
 
@@ -42,6 +42,12 @@ void			print_stack(t_stack *stack);
 void			print_numbers(t_node *list, char x);
 void			print_both(t_node *stackA, t_node *stackB);
 void			free_stack(t_stack *stack);
+void			free_all(t_stack *stackA, t_stack *stackB);
+int				ft_toupper(int c);
+void			update_moves(t_stack *stackA, char *ins);
+void			free_moves(t_stack *stack);
+void			print_moves(t_move *move);
+t_move			*new_move(void);
 
 
 #endif
