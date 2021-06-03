@@ -43,21 +43,26 @@ void	temp_caller(t_stack *stackA, t_stack *stackB)
 
 	fd = 0;
 	sort = 0;
-	print_both(stackA->node, stackB->node);
 	while (((ret = get_next_line(fd, &line)) > 0) && sort == 0)
 	{
 		if (check_line(line) != 1)
 			printf("Wrong Move Input. Please enter again\n");
 		exec(line, stackA, stackB);
 		free(line);
-		print_both(stackA->node, stackB->node);
+		// print_both(stackA->node, stackB->node);
 		sort = check_sorted(stackA, stackB);
 		if (sort == 1)
+		{
+			printf("ret is [%d]\n", ret);
 			printf("Congratulations stack sorted\n Press enter to exit\n");
+		}
 	}
 	free(line);
 	print_moves(stackA->moves);
 }
+
+
+
 
 int		main(int argc, char **argv)
 {
@@ -72,7 +77,14 @@ int		main(int argc, char **argv)
 	stackB = stack_init();
 	printf("args - [%s]\n", argv[1]);
 	fill_stack(argv, stackA);
-	temp_caller(stackA, stackB);
+	print_both(stackA->node, stackB->node);
+	moves_creator(stackA, stackB);
+	if (check_sorted(stackA, stackB) == 1)
+		printf("Congratulations data sorted\n");
+	else
+		printf("BAAAAM What a Bummer \n");
+	print_moves(stackA->moves);
+	// temp_caller(stackA, stackB);
 	free_all(stackA, stackB);
 	return (0);
 }

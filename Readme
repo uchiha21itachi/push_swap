@@ -4,7 +4,15 @@ ARG=`ruby -e "puts (0..3).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker
 ARG=`ruby -e "puts (0..3).to_a.join(' ')"`; valgrind --leak-check=full --show-leak-kinds=definite --track-origins=yes  --read-var-info=yes ./a.out $ARG
 
 
+length of stack and number of operations on average :
 
+3 == 5 (max 5)
+
+5 == 11 (max 12)
+
+100 == 833 (max 900)
+
+500 == 7900 (max 8500)
 
 
 
@@ -26,8 +34,27 @@ ARG=`ruby -e "puts (0..3).to_a.join(' ')"`; valgrind --leak-check=full --show-le
 
 
 /*
-    If instertion method => ft_lstadd_back 
-        reverse the printing order of link list use temp = temp->previous
-    If insertion method => ft_lstadd_front
-        swap needs to be changed
+    if (stackA->num > stackA->next->num)
+        swapA;
+    if (stackA->num > ft_lstlast(stackA))
+        rra;
+        sa; 
+                            2
+                            0
+                            1
+
+if (stackA->num > stackA->next->num)
+        swapA;
+if (stackA->num < ft_last;
+    ra;
+    sa
+    rra
+    
 */
+
+
+
+
+
+
+

@@ -114,6 +114,7 @@ void     exec(char *ins, t_stack *stackA, t_stack *stackB)
         i   = exec_helper(ins, stackA, stackB);
     else
     {
+
         if (!ft_strncmp(ins, "SA", 3))
             swap_A_B(stackA);
         else if (!ft_strncmp(ins, "SB", 3))
@@ -135,4 +136,5 @@ void     exec(char *ins, t_stack *stackA, t_stack *stackB)
     }
     if (i == 1)
         update_moves(stackA, ins);
+	print_both(stackA->node, stackB->node);
 }   
