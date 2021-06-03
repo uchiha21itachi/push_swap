@@ -50,6 +50,11 @@ void			print_moves(t_move *move);
 t_move			*new_move(void);
 void			moves_creator(t_stack *stackA, t_stack *stackB);
 int				check_sorted(t_stack *stackA, t_stack *stackB);
+int    			get_max_pos(t_stack *stackA);
+void    		get_min_max(t_node  *node);
+void    		create_moves_hundred(t_stack *stackA, t_stack *stackB);
+
+
 
 
 

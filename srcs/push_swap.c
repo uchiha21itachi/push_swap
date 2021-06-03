@@ -82,9 +82,11 @@ int		main(int argc, char **argv)
 	if (check_sorted(stackA, stackB) == 1)
 		printf("Congratulations data sorted\n");
 	else
+	{
 		printf("BAAAAM What a Bummer \n");
+		temp_caller(stackA, stackB);
+	}
 	print_moves(stackA->moves);
-	// temp_caller(stackA, stackB);
 	free_all(stackA, stackB);
 	return (0);
 }
