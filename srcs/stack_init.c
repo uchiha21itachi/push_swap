@@ -74,3 +74,23 @@ void	update_moves(t_stack *stackA, char *ins)
 	}
 	add_move_back(stackA, move);
 }
+
+
+t_data 	*data_init(void)
+{
+	t_data	*data;
+
+	data = (t_data *)malloc(sizeof(t_data));
+	if (data == NULL)
+	{
+		printf("malloc error");
+		return (NULL);
+	}
+	data->max = 0;
+	data->min = 0;
+	data->med = 0;
+	data->med_pos = 0;
+	data->max_pos = 0;
+	data->min_pos = 0;
+	return (data);
+}

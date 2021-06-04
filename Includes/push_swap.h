@@ -27,6 +27,17 @@ typedef	struct s_stack
 	int				length;
 }				t_stack;
 
+typedef	struct s_data
+{
+	int		min;
+	int		min_pos;
+	int		max;
+	int		max_pos;
+	int		med;
+	int		med_pos;
+}				t_data;
+
+
 t_node			*ft_lstnew(int content);
 void			ft_lstadd_front(t_stack *stack, t_node *new);
 int				ft_lstsize(t_node *lst);
@@ -51,8 +62,11 @@ t_move			*new_move(void);
 void			moves_creator(t_stack *stackA, t_stack *stackB);
 int				check_sorted(t_stack *stackA, t_stack *stackB);
 int    			get_max_pos(t_stack *stackA);
-void    		get_min_max(t_node  *node);
-void    		create_moves_hundred(t_stack *stackA, t_stack *stackB);
+void     		get_min_pos(t_node *node, t_data *data);
+void    		create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data);
+void    		get_median(t_stack *stack, t_data *data);
+t_data 			*data_init(void);
+void		    update_min(t_node *node, t_data *data);
 
 
 

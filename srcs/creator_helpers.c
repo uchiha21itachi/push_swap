@@ -1,23 +1,36 @@
 #include "../Includes/push_swap.h"
 
-
-
-void    get_min_max(t_node  *node)
+void    get_median(t_stack *stack, t_data *data)
 {
-    int		min;
-	int		max;
+    t_node  *node;
+    int     i;
 
-    min = node->number;
-	max = node->number;
+    node = stack->node;
+    i = 0;
+    data->min = node->number;
+	data->max = node->number;
 	while (node)
 	{
-		if (min > node->number)
-			min = node->number;
-		if (max < node->number)
-			max = node->number;
+		if (data->min > node->number)
+			data->min = node->number;
+		if (data->max < node->number)
+			data->max = node->number;
 		node = node->next;
 	}
-	printf("min - [%d] max [%d]\n", min, max);
+    data->med = (data->max + data->min) / 2;
+    node = stack->node;
+    while (node)
+    {
+        i++;
+        if (node->number == data->med)
+            data->med_pos = i;
+        if (node->number == data->max)
+            data->max_pos = i;
+        if (node->number == data->min)
+            data->min_pos = i;
+        node = node->next;
+    }
+    printf("max [%d] min [%d] med_num [%d] med_pos [%d]\n", data->max, data->min, data->med, data->med_pos);
 }
 
 
@@ -33,7 +46,6 @@ int     get_max_pos(t_stack *stackA)
     if (stackA->node == NULL)
         return (-1);
 
-    printf("Length of stack in question - [%d]\n", stackA->length);
     new = stackA->node;
     max_number = new->number;
     while (new)
@@ -46,6 +58,39 @@ int     get_max_pos(t_stack *stackA)
         } 
         new = new->next;
     }
-    printf("max_number - [%d] position in stack - [%d]\n", max_number, pos);
     return (pos);
+}
+
+void     get_min_pos(t_node *node, t_data *data)
+{
+    t_node  *temp;
+    int     i;
+
+    i = 0;
+    temp = node;
+    while (temp)
+    {
+        i++;
+        if (temp->number == data->min)
+            data->min_pos = i;
+        temp = temp->next;
+    }
+}
+
+void    update_min(t_node *node, t_data *data)
+{
+    t_node  *temp;
+    int     i;
+
+    i = 0;
+    temp = node;
+    data->min = temp->number;
+    while (temp)
+    {
+        i++;
+        if (data->min > temp->number)
+            data->min = temp->number;
+        temp = temp->next;
+    }
+    get_min_pos(node, data);
 }

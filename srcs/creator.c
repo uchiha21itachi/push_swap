@@ -79,16 +79,18 @@ void	moves_creator(t_stack *stackA, t_stack *stackB)
 {
 
 	t_node	*temp_node;
+    t_data  *sort_data;
 
-	(void)stackB;
+    sort_data = data_init();
 	temp_node = stackA->node;
-    get_min_max(temp_node);
     if  (check_sorted(stackA, stackB) == 1)
                 return ;
 	if (stackA->length <=3)
         create_moves_three(stackA, stackB);
     else if (stackA->length > 3 && stackA->length <= 5)
         create_moves_five(stackA, stackB);
-    else if (stackA->length > 5 && stackA->length <= 50)
-        create_moves_hundred(stackA, stackB);
+    else if (stackA->length > 5 && stackA->length <= 100)
+        create_moves_hundred(stackA, stackB, sort_data);
+
+    free(sort_data);
 }
