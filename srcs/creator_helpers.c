@@ -94,3 +94,46 @@ void    update_min(t_node *node, t_data *data)
     }
     get_min_pos(node, data);
 }
+
+
+void    get_holds(t_stack *stack, t_data *data, int i)
+{
+    t_node *node;
+    int     pos;
+    int     temp_hold;
+
+    pos = 0;
+    temp_hold = 0;
+    if (i == 2 || i == 0)
+    {
+        node = stack->node;
+        while (node)
+        {
+            pos++;
+            if ((node->number <= data->med) && temp_hold == 0)
+            {
+                data->hold_one = pos;
+                temp_hold = 1;
+            }
+            node = node->next;
+        }
+    }
+    pos = stack->length;
+    temp_hold = 0;
+    if (i == 2 || i == 1)
+    {
+        node = ft_lstlast(stack->node);
+        while (node)
+        {
+            if ((node->number <= data->med) && temp_hold == 0)
+            {
+                data->hold_two = pos;
+                temp_hold = 1;
+            }
+            node = node->previous;
+            pos--;
+        }
+    }
+
+}
+

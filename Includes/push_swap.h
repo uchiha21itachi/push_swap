@@ -35,6 +35,9 @@ typedef	struct s_data
 	int		max_pos;
 	int		med;
 	int		med_pos;
+	int		hold_one;
+	int		hold_two;
+
 }				t_data;
 
 
@@ -67,6 +70,7 @@ void    		create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data);
 void    		get_median(t_stack *stack, t_data *data);
 t_data 			*data_init(void);
 void		    update_min(t_node *node, t_data *data);
+void    		get_holds(t_stack *stack, t_data *data, int i);
 
 
 

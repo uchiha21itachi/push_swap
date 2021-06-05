@@ -29,8 +29,7 @@ length of stack and number of operations on average :
 
 
 
-
-
+https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
 
 
 /*
@@ -51,6 +50,41 @@ if (stackA->num < ft_last;
     rra
     
 */
+
+
+
+
+
+
+
+
+
+
+    // // while (data->min <= data->med)
+    // // {
+    // //     while (data->min_pos != 1)
+    // //     {
+    // //        if (data->min_pos > (stackA->length / 2))
+    // //             exec("RRA", stackA, stackB);
+    // //         else
+    // //             exec("RA", stackA, stackB);
+    // //         get_min_pos(stackA->node, data);
+    // //     }
+    // //     exec("PB", stackA, stackB);
+    // //     update_min(stackA->node, data);
+    // //     printf("NEW -> min [%d] min pos [%d]\n",data->min, data->min_pos);
+    // // }
+    // // while (data->min_pos != 1)
+    // // {
+    // //     if (data->min_pos > (stackA->length / 2))
+    // //         exec("RRA", stackA, stackB);
+    // //     else
+    // //         exec("RA", stackA, stackB);
+    // //     get_min_pos(stackA->node, data);
+
+    // // }
+    // while (stackB->length != 0)
+    //     exec("PA", stackA, stackB);
 
 
 

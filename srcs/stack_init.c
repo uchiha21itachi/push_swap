@@ -92,5 +92,7 @@ t_data 	*data_init(void)
 	data->med_pos = 0;
 	data->max_pos = 0;
 	data->min_pos = 0;
+	data->hold_one = 0;
+	data->hold_two = 0;
 	return (data);
 }
