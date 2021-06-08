@@ -8,9 +8,11 @@ SRCS = srcs/push_swap.c\
 srcs/stack_init.c \
 srcs/list_crud.c \
 srcs/executor.c \
+srcs/partition.c \
 srcs/creator.c \
-srcs/create_hundred_moves.c \
 srcs/creator_helpers.c \
+srcs/create_hundred_moves.c \
+srcs/create_hundred_helpers.c \
 srcs/free.c \
 srcs/print_all.c \
 

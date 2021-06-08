@@ -112,7 +112,8 @@ void    get_holds(t_stack *stack, t_data *data, int i)
             pos++;
             if ((node->number <= data->med) && temp_hold == 0)
             {
-                data->hold_one = pos;
+                data->hold_one_pos = pos;
+                data->hold_one = node->number;
                 temp_hold = 1;
             }
             node = node->next;
@@ -127,13 +128,16 @@ void    get_holds(t_stack *stack, t_data *data, int i)
         {
             if ((node->number <= data->med) && temp_hold == 0)
             {
-                data->hold_two = pos;
+                data->hold_two_pos = pos;
+                data->hold_two = node->number;
                 temp_hold = 1;
             }
             node = node->previous;
             pos--;
         }
     }
+    // printf("- Hold_one is [%d] pos - [%d]\n", data->hold_one, data->hold_one_pos);
+    // printf("- Hold_two is [%d] pos - [%d]\n", data->hold_two, data->hold_two_pos);
 
 }
 

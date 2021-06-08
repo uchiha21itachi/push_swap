@@ -93,6 +93,8 @@ t_data 	*data_init(void)
 	data->max_pos = 0;
 	data->min_pos = 0;
 	data->hold_one = 0;
+	data->hold_one_pos = 0;
 	data->hold_two = 0;
+	data->hold_two_pos = 0;
 	return (data);
 }

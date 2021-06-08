@@ -78,11 +78,9 @@ void    create_moves_three(t_stack *stackA, t_stack *stackB)
 void	moves_creator(t_stack *stackA, t_stack *stackB)
 {
 
-	t_node	*temp_node;
     t_data  *sort_data;
 
     sort_data = data_init();
-	temp_node = stackA->node;
     if  (check_sorted(stackA, stackB) == 1)
                 return ;
 	if (stackA->length <=3)

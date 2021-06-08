@@ -1,100 +1,91 @@
 #include "../Includes/push_swap.h"
 
-void    print_all_min_max(t_stack *stack, t_data *data)
+void   sort_stackB(t_stack *stackA, t_stack *stackB, int req_pos, int stop_num)
 {
-    t_node  *temp;
-    int pos;
-
-    pos = 0;
-    temp = stack->node;
-    printf("\n\n");
-    while(temp)
+    if (req_pos == 2)
+        exec("SB", stackA, stackB);
+    else if (req_pos == stackB->length)
+        exec("RB", stackA, stackB);
+    else if (req_pos > 2 && req_pos != stackB->length)
     {
-        pos++;
-        if (temp->number <= data->med)
-        {
-            printf("less - [%d] - pos - [%d]\n", temp->number, pos);
-        }
-        temp = temp->next;
+            while (stackB->node->next->number != stop_num)
+            {
+                if(req_pos <= stackB->length / 2)
+                {
+                    printf("case 1 sb rb\n");
+                    exec("SB", stackA, stackB);
+                    exec("RB", stackA, stackB);
+                }
+                else
+                {
+                    printf("case 2 rrb  sb\n");
+                    exec("RRB", stackA, stackB);
+                    exec("SB", stackA, stackB);
+                }
+            }
+        cal_stackB_rot(stackA, stackB, req_pos);
     }
-
-    temp = stack->node;
-    pos = 0;
-    while(temp)
-    {
-        pos++;
-        if (temp->number > data->med)
-        {
-            printf("greater - [%d] - pos - [%d]\n", temp->number, pos);
-        }
-        temp = temp->next;
-    }
-    printf("\n\n");
-
 }
 
 
-void   cal_optimal_rot(t_stack *stackA, t_stack *stackB, t_data *data)
+void    sort_stackB_start(t_stack *stackA, t_stack *stackB)
 {
-    int     m1;
-    int     m2;
-    int     temp;
+    int     num;
+    int     stop_num;
+    t_node  *temp;
+    int     pos;
+    int     req_pos;
 
-    (void)stackB;
-    m1 = data->hold_one - 1;
-    m2 = (stackA->length - data->hold_two) + 1;
-    temp = 0;
-    printf("moves to make hold one at top [%d]\n", m1);
-    printf("moves to make hold two at top [%d]\n", m2);
-    if (m1 < m2)
+    num = stackB->node->number;
+    temp = stackB->node;
+    pos = 0;
+    req_pos = 0;
+    stop_num = 0;
+    while (temp)
     {
-        while(temp != m1)
+        pos++;
+        if(temp->number > num)
         {
-            exec("RA", stackA, stackB);
-            temp++;      
+            req_pos = pos;
+            if(temp->next != NULL)
+                stop_num = temp->next->number;
         }
+        temp = temp->next;
     }
-    else
-    {
-        while(temp != m2)
-        {
-            exec("RRA", stackA, stackB);
-            temp++;      
-        }
-    }
-    exec("PB", stackA, stackB);
-    get_holds(stackA, data, 2);
-    //add a cond if m1==m2 then take priority to m1 if m1<m2 or vice versa
+    printf("required pos [%d] stackB length [%d] stop_num [%d]\n",req_pos, stackB->length, stop_num);
+    sort_stackB(stackA, stackB, req_pos, stop_num);
 }
 
 void    move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
 {
-    // int i;
+    int i;
+    int ret;
     int chunks;
-    chunks = (stackA->length / 20) + 1;
 
-    // i = 0;
+    chunks = (stackA->length / 20) + 1;
+    ret = -1;
+    get_holds(stackA, data, 2);
     if (chunks == 1)
     {
-        while(stackA->length != 0)
+        i = stackA->length / 2;
+        while(stackA->length != i)
         {
-            printf("before - Hold_one is in  pos - [%d]\n", data->hold_one);
-            printf("before - Hold_two is in  pos - [%d]\n", data->hold_two);
-            cal_optimal_rot(stackA, stackB, data);
-            printf("Hold_one is in  pos - [%d]\n", data->hold_one);
-            printf("Hold_two is in  pos - [%d]\n", data->hold_two);
+            cal_stackA_rot(stackA, stackB, data);
+            exec("PB", stackA, stackB);
+            ret = check_stack_sort(stackB);
+            printf("stackB sorted? [1 - sorted] [0 - not sorted]\n ret[%d]\n", ret);
+            if (ret == 0)
+                sort_stackB_start(stackA, stackB);
+            get_holds(stackA, data, 2);
         }
     }    
-    
 }
 
 void    create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data)
 {
-
     get_median(stackA, data);
     print_all_min_max(stackA, data);
     printf("Length of stackA- [%d]\n",stackA->length);
-    get_holds(stackA, data, 2);
+    create_chunks(stackA, stackB, data);
     move_to_stackB(stackA, stackB, data);
-
 }

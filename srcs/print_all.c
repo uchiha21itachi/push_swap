@@ -92,3 +92,37 @@ void	print_moves(t_move *move)
 	}
 	printf("-------------------------\n\n\n");
 }
+
+
+void    print_all_min_max(t_stack *stack, t_data *data)
+{
+    t_node  *temp;
+    int pos;
+
+    pos = 0;
+    temp = stack->node;
+    printf("\n\n");
+    while(temp)
+    {
+        pos++;
+        if (temp->number <= data->med)
+        {
+            printf("less - [%d] - pos - [%d]\n", temp->number, pos);
+        }
+        temp = temp->next;
+    }
+
+    temp = stack->node;
+    pos = 0;
+    while(temp)
+    {
+        pos++;
+        if (temp->number > data->med)
+        {
+            printf("greater - [%d] - pos - [%d]\n", temp->number, pos);
+        }
+        temp = temp->next;
+    }
+    printf("\n\n");
+
+}

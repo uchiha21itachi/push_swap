@@ -36,7 +36,9 @@ typedef	struct s_data
 	int		med;
 	int		med_pos;
 	int		hold_one;
+	int		hold_one_pos;
 	int		hold_two;
+	int		hold_two_pos;
 
 }				t_data;
 
@@ -71,6 +73,12 @@ void    		get_median(t_stack *stack, t_data *data);
 t_data 			*data_init(void);
 void		    update_min(t_node *node, t_data *data);
 void    		get_holds(t_stack *stack, t_data *data, int i);
+void   			print_all_min_max(t_stack *stack, t_data *data);
+int 			check_stack_sort(t_stack *stack);
+void   			cal_stackA_rot(t_stack *stackA, t_stack *stackB, t_data *data);
+void    		cal_stackB_rot(t_stack *stackA, t_stack *stackB, int req_pos);
+void   			sort_stackB(t_stack *stackA, t_stack *stackB, int req_pos, int stop_num);
+void       		create_chunks(t_stack *stackA, t_stack *stackB, t_data *data);
 
 
 
