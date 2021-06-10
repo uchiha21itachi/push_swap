@@ -80,7 +80,7 @@ void	moves_creator(t_stack *stackA, t_stack *stackB)
 
     t_data  *sort_data;
 
-    sort_data = data_init();
+    sort_data = data_init(stackA);
     if  (check_sorted(stackA, stackB) == 1)
                 return ;
 	if (stackA->length <=3)
@@ -89,6 +89,9 @@ void	moves_creator(t_stack *stackA, t_stack *stackB)
         create_moves_five(stackA, stackB);
     else if (stackA->length > 5 && stackA->length <= 100)
         create_moves_hundred(stackA, stackB, sort_data);
-
+    printf("Length of stack - [%d]\n", stackA->length + stackB->length);
+    free(sort_data->og_pos);
+    free(sort_data->req_pos);
+    free(sort_data->og_stack);
     free(sort_data);
 }

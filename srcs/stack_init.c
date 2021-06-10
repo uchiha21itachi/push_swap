@@ -76,22 +76,30 @@ void	update_moves(t_stack *stackA, char *ins)
 }
 
 
-t_data 	*data_init(void)
+t_data 	*data_init(t_stack *stackA)
 {
 	t_data	*data;
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (data == NULL)
 	{
-		printf("malloc error");
+		printf("malloc error datainit01");
+		return (NULL);
+	}
+	data->og_stack = (int *)malloc(sizeof(int) * stackA->length);
+    data->og_pos = (int *)malloc(sizeof(int) * stackA->length);
+    data->req_pos = (int *)malloc(sizeof(int) * stackA->length);
+	if (data->og_pos == NULL || data->og_stack == NULL || data->req_pos == NULL)
+	{
+		printf("malloc error datainit02\n");
 		return (NULL);
 	}
 	data->max = 0;
 	data->min = 0;
 	data->med = 0;
-	data->med_pos = 0;
-	data->max_pos = 0;
-	data->min_pos = 0;
+	data->med_pos = -1;
+	data->max_pos = -1;
+	data->min_pos = -1;
 	data->hold_one = 0;
 	data->hold_one_pos = 0;
 	data->hold_two = 0;

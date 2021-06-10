@@ -27,19 +27,32 @@ typedef	struct s_stack
 	int				length;
 }				t_stack;
 
+typedef struct s_chunks
+{
+	int		num;
+	int		*members;
+	int		med;
+	int		max;
+	int		min;
+	int		length;
+
+}				t_chunks;
 typedef	struct s_data
 {
-	int		min;
-	int		min_pos;
-	int		max;
-	int		max_pos;
-	int		med;
-	int		med_pos;
-	int		hold_one;
-	int		hold_one_pos;
-	int		hold_two;
-	int		hold_two_pos;
-
+	int			min;
+	int			min_pos;
+	int			max;
+	int			max_pos;
+	int			med;
+	int			med_pos;
+	int			hold_one;
+	int			hold_one_pos;
+	int			hold_two;
+	int			hold_two_pos;
+	int			*og_pos;
+	int			*req_pos;
+	int			*og_stack;
+	t_chunks	*chunks
 }				t_data;
 
 
@@ -70,7 +83,7 @@ int    			get_max_pos(t_stack *stackA);
 void     		get_min_pos(t_node *node, t_data *data);
 void    		create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data);
 void    		get_median(t_stack *stack, t_data *data);
-t_data 			*data_init(void);
+t_data 			*data_init(t_stack *stackA);
 void		    update_min(t_node *node, t_data *data);
 void    		get_holds(t_stack *stack, t_data *data, int i);
 void   			print_all_min_max(t_stack *stack, t_data *data);
@@ -79,7 +92,8 @@ void   			cal_stackA_rot(t_stack *stackA, t_stack *stackB, t_data *data);
 void    		cal_stackB_rot(t_stack *stackA, t_stack *stackB, int req_pos);
 void   			sort_stackB(t_stack *stackA, t_stack *stackB, int req_pos, int stop_num);
 void       		create_chunks(t_stack *stackA, t_stack *stackB, t_data *data);
-
+void    		sort_number(t_data *data, int n);
+void       		print_array(int *arr, int n);
 
 
 #endif

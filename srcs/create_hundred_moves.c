@@ -12,13 +12,13 @@ void   sort_stackB(t_stack *stackA, t_stack *stackB, int req_pos, int stop_num)
             {
                 if(req_pos <= stackB->length / 2)
                 {
-                    printf("case 1 sb rb\n");
+                    // printf("case 1 sb rb\n");
                     exec("SB", stackA, stackB);
                     exec("RB", stackA, stackB);
                 }
                 else
                 {
-                    printf("case 2 rrb  sb\n");
+                    // printf("case 2 rrb  sb\n");
                     exec("RRB", stackA, stackB);
                     exec("SB", stackA, stackB);
                 }
@@ -52,8 +52,15 @@ void    sort_stackB_start(t_stack *stackA, t_stack *stackB)
         }
         temp = temp->next;
     }
-    printf("required pos [%d] stackB length [%d] stop_num [%d]\n",req_pos, stackB->length, stop_num);
+    // printf("required pos [%d] stackB length [%d] stop_num [%d]\n",req_pos, stackB->length, stop_num);
     sort_stackB(stackA, stackB, req_pos, stop_num);
+}
+
+void    move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data)
+{
+    while (stackB->length != 0)
+        exec("PA", stackA, stackB);
+    (void)data;
 }
 
 void    move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
@@ -62,7 +69,9 @@ void    move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
     int ret;
     int chunks;
 
-    chunks = (stackA->length / 20) + 1;
+    chunks = stackA->length / 20;
+    if (stackA->length % 20  != 0)
+        chunks++;
     ret = -1;
     get_holds(stackA, data, 2);
     if (chunks == 1)
@@ -78,14 +87,17 @@ void    move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
                 sort_stackB_start(stackA, stackB);
             get_holds(stackA, data, 2);
         }
+        printf("done in here\n");
+        move_to_stackA(stackA, stackB, data);
     }    
 }
 
 void    create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data)
 {
-    get_median(stackA, data);
-    print_all_min_max(stackA, data);
-    printf("Length of stackA- [%d]\n",stackA->length);
     create_chunks(stackA, stackB, data);
-    move_to_stackB(stackA, stackB, data);
+    // get_median(stackA, data);
+    (void)stackB;
+    // move_to_stackB(stackA, stackB, data);
+    // print_all_min_max(stackA, data);
+    // free_og_data(stackA, data);
 }

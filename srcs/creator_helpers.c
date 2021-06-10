@@ -1,5 +1,42 @@
 #include "../Includes/push_swap.h"
 
+void    fix_med_pos(t_stack *stackA, t_data *data)
+{
+    t_node *node;
+    int     diff;
+    int     diff2;
+    int     i;
+    int     med;
+
+    node = stackA->node;
+    i = 1;
+    med = data->med;
+    data->med = node->number;
+    data->med_pos = 1; 
+    diff2 = 0;
+    diff = 0;
+    while (node)
+    {
+        diff = med - data->med;
+        diff2 = med - node->number;
+        printf("\n\n\n");
+        printf("data->med [%d] diff [%d]\n", data->med, diff );
+        printf("number [%d] diff2 [%d] \n", node->number, diff2);
+        if (diff < 0)
+            diff = diff * (-1); 
+        if (diff2 < 0)
+            diff2 = diff2 * (-1);
+        if (diff > diff2)
+        {
+            data->med = node->number;
+            data->med_pos = i + 1;
+        }
+        i++;
+        node = node->next;
+    }
+    printf("\n\n\n\n");
+}
+
 void    get_median(t_stack *stack, t_data *data)
 {
     t_node  *node;
@@ -30,6 +67,8 @@ void    get_median(t_stack *stack, t_data *data)
             data->min_pos = i;
         node = node->next;
     }
+    if (data->med_pos == -1)
+        fix_med_pos(stack, data);
     printf("max [%d] min [%d] med_num [%d] med_pos [%d]\n", data->max, data->min, data->med, data->med_pos);
 }
 

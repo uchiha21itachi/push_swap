@@ -49,7 +49,6 @@ void	temp_caller(t_stack *stackA, t_stack *stackB)
 			printf("Wrong Move Input. Please enter again\n");
 		exec(line, stackA, stackB);
 		free(line);
-		// print_both(stackA->node, stackB->node);
 		sort = check_sorted(stackA, stackB);
 		if (sort == 1)
 		{
@@ -60,8 +59,6 @@ void	temp_caller(t_stack *stackA, t_stack *stackB)
 	free(line);
 	print_moves(stackA->moves);
 }
-
-
 
 
 int		main(int argc, char **argv)
@@ -90,3 +87,11 @@ int		main(int argc, char **argv)
 	free_all(stackA, stackB);
 	return (0);
 }
+
+
+
+
+/*
+	Need to check duplicates in arg
+	Change printf and error mechanism
+*/
