@@ -22,7 +22,6 @@ int     get_opt_rot(t_stack *stackA, t_data *data, int j)
     int     i;
     int     pos1;
 
-    printf("j[%d] j chunk max[%d] in getoptrot\n ", j, data->chunks[j]->min);
     i = 0;
     pos1 = 0;
     node = stackA->node;
@@ -33,9 +32,6 @@ int     get_opt_rot(t_stack *stackA, t_data *data, int j)
         i++;
         node = node->next; 
     }
-    printf("pos1[%d]\n", pos1);
-    printf("moves 1 [%d]\n", pos1 - 1);
-    printf("moves 2 [%d]\n", (stackA->length - pos1) + 1);
     if ((pos1 -1) >= (stackA->length - pos1) + 1)
         return (1);
     else if ((pos1 -1) < (stackA->length - pos1) + 1)

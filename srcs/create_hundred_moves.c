@@ -12,13 +12,11 @@ void   sort_stackB(t_stack *stackA, t_stack *stackB, int req_pos, int stop_num)
             {
                 if(req_pos <= stackB->length / 2)
                 {
-                    // printf("case 1 sb rb\n");
                     exec("SB", stackA, stackB);
                     exec("RB", stackA, stackB);
                 }
                 else
                 {
-                    // printf("case 2 rrb  sb\n");
                     exec("RRB", stackA, stackB);
                     exec("SB", stackA, stackB);
                 }
@@ -59,8 +57,6 @@ void    move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int j)
 {
     int rot;
 
-    printf("data chunks length [%d] \n", data->chunks_len);
-    printf("j[%d] j chunk max[%d] in movetostackA\n ", j, data->chunks[j]->max);
     if (j == (data->chunks_len - 1))
     {
         while (stackB->length != 0)
@@ -69,7 +65,6 @@ void    move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int j)
     else 
     {
         rot = get_opt_rot(stackA, data, j+1);
-        printf("\n\n\nrot = [%d]\n", rot);
         while (stackA->node->number != data->chunks[j + 1]->min)
         {    
             if (rot == 1)
@@ -97,7 +92,6 @@ void    move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
     {
         get_holds(stackA, data, j);
         i = data->chunks[j]->length;
-        printf("i is [%d]\n", i);
         while(i > 0)
         {
             cal_stackA_rot(stackA, stackB, data);
@@ -119,8 +113,4 @@ void    create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data)
 {
     create_chunks(stackA, stackB, data);
     move_to_stackB(stackA, stackB, data);
-    // get_median(stackA, data);
-    // (void)data;
-    // print_all_min_max(stackA, data);
-    // free_og_data(stackA, data);
 }

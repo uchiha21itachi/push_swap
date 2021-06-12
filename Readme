@@ -33,58 +33,10 @@ https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-t
 
 
 /*
-    if (stackA->num > stackA->next->num)
-        swapA;
-    if (stackA->num > ft_lstlast(stackA))
-        rra;
-        sa; 
-                            2
-                            0
-                            1
+    To change the size of chunks go to stack_init.c data_init();
 
-if (stackA->num > stackA->next->num)
-        swapA;
-if (stackA->num < ft_last;
-    ra;
-    sa
-    rra
-    
 */
 
-
-
-
-
-
-
-
-
-
-    // // while (data->min <= data->med)
-    // // {
-    // //     while (data->min_pos != 1)
-    // //     {
-    // //        if (data->min_pos > (stackA->length / 2))
-    // //             exec("RRA", stackA, stackB);
-    // //         else
-    // //             exec("RA", stackA, stackB);
-    // //         get_min_pos(stackA->node, data);
-    // //     }
-    // //     exec("PB", stackA, stackB);
-    // //     update_min(stackA->node, data);
-    // //     printf("NEW -> min [%d] min pos [%d]\n",data->min, data->min_pos);
-    // // }
-    // // while (data->min_pos != 1)
-    // // {
-    // //     if (data->min_pos > (stackA->length / 2))
-    // //         exec("RRA", stackA, stackB);
-    // //     else
-    // //         exec("RA", stackA, stackB);
-    // //     get_min_pos(stackA->node, data);
-
-    // // }
-    // while (stackB->length != 0)
-    //     exec("PA", stackA, stackB);
 
 
 
