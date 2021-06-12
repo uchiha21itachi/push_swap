@@ -37,6 +37,7 @@ typedef struct s_chunks
 	int		length;
 
 }				t_chunks;
+
 typedef	struct s_data
 {
 	int			min;
@@ -49,10 +50,12 @@ typedef	struct s_data
 	int			hold_one_pos;
 	int			hold_two;
 	int			hold_two_pos;
+	int			chunks_div;
+	int			chunks_len;
+	int			stack_len;
 	int			*og_pos;
-	int			*req_pos;
 	int			*og_stack;
-	t_chunks	*chunks
+	int			*req_pos;
 }				t_data;
 
 
@@ -71,6 +74,7 @@ void			print_stack(t_stack *stack);
 void			print_numbers(t_node *list, char x);
 void			print_both(t_node *stackA, t_node *stackB);
 void			free_stack(t_stack *stack);
+void			free_data(t_data *data);
 void			free_all(t_stack *stackA, t_stack *stackB);
 int				ft_toupper(int c);
 void			update_moves(t_stack *stackA, char *ins);
@@ -94,7 +98,7 @@ void   			sort_stackB(t_stack *stackA, t_stack *stackB, int req_pos, int stop_nu
 void       		create_chunks(t_stack *stackA, t_stack *stackB, t_data *data);
 void    		sort_number(t_data *data, int n);
 void       		print_array(int *arr, int n);
-
+int     		get_req_pos(t_data *data, int num, int len);
 
 #endif
 

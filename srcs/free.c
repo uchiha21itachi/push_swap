@@ -1,5 +1,12 @@
 #include "../Includes/push_swap.h"
 
+void	free_data(t_data *data)
+{
+	free(data->og_pos);
+    free(data->req_pos);
+    free(data->og_stack);
+    free(data);
+}
 
 void	free_moves(t_stack *stack)
 {

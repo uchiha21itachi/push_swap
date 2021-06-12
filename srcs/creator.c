@@ -90,8 +90,6 @@ void	moves_creator(t_stack *stackA, t_stack *stackB)
     else if (stackA->length > 5 && stackA->length <= 100)
         create_moves_hundred(stackA, stackB, sort_data);
     printf("Length of stack - [%d]\n", stackA->length + stackB->length);
-    free(sort_data->og_pos);
-    free(sort_data->req_pos);
-    free(sort_data->og_stack);
-    free(sort_data);
+    free_data(sort_data);
+   
 }

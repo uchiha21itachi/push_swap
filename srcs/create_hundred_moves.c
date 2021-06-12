@@ -96,7 +96,9 @@ void    create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data)
 {
     create_chunks(stackA, stackB, data);
     // get_median(stackA, data);
-    (void)stackB;
+    // (void)stackB;
+    // (void)stackA;
+    // (void)data;
     // move_to_stackB(stackA, stackB, data);
     // print_all_min_max(stackA, data);
     // free_og_data(stackA, data);
