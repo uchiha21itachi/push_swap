@@ -50,12 +50,14 @@ typedef	struct s_data
 	int			hold_one_pos;
 	int			hold_two;
 	int			hold_two_pos;
+
 	int			chunks_div;
 	int			chunks_len;
 	int			stack_len;
 	int			*og_pos;
 	int			*og_stack;
 	int			*req_pos;
+	t_chunks	**chunks;
 }				t_data;
 
 
@@ -99,6 +101,10 @@ void       		create_chunks(t_stack *stackA, t_stack *stackB, t_data *data);
 void    		sort_number(t_data *data, int n);
 void       		print_array(int *arr, int n);
 int     		get_req_pos(t_data *data, int num, int len);
+int			    get_opt_rot(t_stack *stackA, t_data *data, int j);
+
+void			print_chunks_data(t_data *data);
+
 
 #endif
 

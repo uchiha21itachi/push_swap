@@ -52,32 +52,53 @@ void    sort_stackB_start(t_stack *stackA, t_stack *stackB)
         }
         temp = temp->next;
     }
-    // printf("required pos [%d] stackB length [%d] stop_num [%d]\n",req_pos, stackB->length, stop_num);
     sort_stackB(stackA, stackB, req_pos, stop_num);
 }
 
-void    move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data)
+void    move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int j)
 {
-    while (stackB->length != 0)
-        exec("PA", stackA, stackB);
-    (void)data;
+    int rot;
+
+    printf("data chunks length [%d] \n", data->chunks_len);
+    printf("j[%d] j chunk max[%d] in movetostackA\n ", j, data->chunks[j]->max);
+    if (j == (data->chunks_len - 1))
+    {
+        while (stackB->length != 0)
+            exec("PA", stackA, stackB);
+    }
+    else 
+    {
+        rot = get_opt_rot(stackA, data, j+1);
+        printf("\n\n\nrot = [%d]\n", rot);
+        while (stackA->node->number != data->chunks[j + 1]->min)
+        {    
+            if (rot == 1)
+                exec("RRA", stackA, stackB);
+            else if (rot == 2)
+                exec("RA", stackA, stackB);
+        }
+        while (stackB->length != 0)
+            exec("PA", stackA, stackB);
+    }
+
 }
 
 void    move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
 {
+    
     int i;
+    int j;
     int ret;
-    int chunks;
 
-    chunks = stackA->length / 20;
-    if (stackA->length % 20  != 0)
-        chunks++;
     ret = -1;
-    get_holds(stackA, data, 2);
-    if (chunks == 1)
+    j = data->chunks_len - 1;
+    (void)stackB;
+    while (j >= 0)
     {
-        i = stackA->length / 2;
-        while(stackA->length != i)
+        get_holds(stackA, data, j);
+        i = data->chunks[j]->length;
+        printf("i is [%d]\n", i);
+        while(i > 0)
         {
             cal_stackA_rot(stackA, stackB, data);
             exec("PB", stackA, stackB);
@@ -85,21 +106,21 @@ void    move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
             printf("stackB sorted? [1 - sorted] [0 - not sorted]\n ret[%d]\n", ret);
             if (ret == 0)
                 sort_stackB_start(stackA, stackB);
-            get_holds(stackA, data, 2);
+            get_holds(stackA, data, j);
+            i--;
         }
         printf("done in here\n");
-        move_to_stackA(stackA, stackB, data);
+        move_to_stackA(stackA, stackB, data, j);
+        j--;
     }    
 }
 
 void    create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data)
 {
     create_chunks(stackA, stackB, data);
+    move_to_stackB(stackA, stackB, data);
     // get_median(stackA, data);
-    // (void)stackB;
-    // (void)stackA;
     // (void)data;
-    // move_to_stackB(stackA, stackB, data);
     // print_all_min_max(stackA, data);
     // free_og_data(stackA, data);
 }

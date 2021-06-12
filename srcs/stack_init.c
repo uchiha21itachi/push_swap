@@ -86,14 +86,6 @@ t_data 	*data_init(t_stack *stackA)
 		printf("malloc error datainit01");
 		return (NULL);
 	}
-	data->og_stack = (int *)malloc(sizeof(int) * stackA->length);
-    data->og_pos = (int *)malloc(sizeof(int) * stackA->length);
-    data->req_pos = (int *)malloc(sizeof(int) * stackA->length);
-	if (data->og_pos == NULL || data->og_stack == NULL || data->req_pos == NULL)
-	{
-		printf("malloc error datainit02\n");
-		return (NULL);
-	}
 	data->max = 0;
 	data->min = 0;
 	data->med = 0;
@@ -104,6 +96,7 @@ t_data 	*data_init(t_stack *stackA)
 	data->hold_one_pos = 0;
 	data->hold_two = 0;
 	data->hold_two_pos = 0;
+	data->stack_len = stackA->length;
 	data->chunks_div = 20;
     data->chunks_len = stackA->length / data->chunks_div;
 	if (stackA->length % data->chunks_div  != 0)

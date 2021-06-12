@@ -2,7 +2,15 @@
 
 void	free_data(t_data *data)
 {
-	free(data->og_pos);
+	int		i;
+
+	i = -1;
+	while (++i < data->chunks_len)
+	{
+		free(data->chunks[i]->members);
+		free(data->chunks[i]);
+	}
+	free(data->chunks);
     free(data->req_pos);
     free(data->og_stack);
     free(data);

@@ -1,76 +1,76 @@
 #include "../Includes/push_swap.h"
 
-void    fix_med_pos(t_stack *stackA, t_data *data)
-{
-    t_node *node;
-    int     diff;
-    int     diff2;
-    int     i;
-    int     med;
+// void    fix_med_pos(t_stack *stackA, t_data *data)
+// {
+//     t_node *node;
+//     int     diff;
+//     int     diff2;
+//     int     i;
+//     int     med;
 
-    node = stackA->node;
-    i = 1;
-    med = data->med;
-    data->med = node->number;
-    data->med_pos = 1; 
-    diff2 = 0;
-    diff = 0;
-    while (node)
-    {
-        diff = med - data->med;
-        diff2 = med - node->number;
-        printf("\n\n\n");
-        printf("data->med [%d] diff [%d]\n", data->med, diff );
-        printf("number [%d] diff2 [%d] \n", node->number, diff2);
-        if (diff < 0)
-            diff = diff * (-1); 
-        if (diff2 < 0)
-            diff2 = diff2 * (-1);
-        if (diff > diff2)
-        {
-            data->med = node->number;
-            data->med_pos = i + 1;
-        }
-        i++;
-        node = node->next;
-    }
-    printf("\n\n\n\n");
-}
+//     node = stackA->node;
+//     i = 1;
+//     med = data->med;
+//     data->med = node->number;
+//     data->med_pos = 1; 
+//     diff2 = 0;
+//     diff = 0;
+//     while (node)
+//     {
+//         diff = med - data->med;
+//         diff2 = med - node->number;
+//         printf("\n\n\n");
+//         printf("data->med [%d] diff [%d]\n", data->med, diff );
+//         printf("number [%d] diff2 [%d] \n", node->number, diff2);
+//         if (diff < 0)
+//             diff = diff * (-1); 
+//         if (diff2 < 0)
+//             diff2 = diff2 * (-1);
+//         if (diff > diff2)
+//         {
+//             data->med = node->number;
+//             data->med_pos = i + 1;
+//         }
+//         i++;
+//         node = node->next;
+//     }
+//     printf("\n\n\n\n");
+// }
 
-void    get_median(t_stack *stack, t_data *data)
-{
-    t_node  *node;
-    int     i;
+// void    get_median(t_stack *stack, t_data *data)
+// {
+//     t_node  *node;
+//     int     i;
 
-    node = stack->node;
-    i = 0;
-    data->min = node->number;
-	data->max = node->number;
-	while (node)
-	{
-		if (data->min > node->number)
-			data->min = node->number;
-		if (data->max < node->number)
-			data->max = node->number;
-		node = node->next;
-	}
-    data->med = (data->max + data->min) / 2;
-    node = stack->node;
-    while (node)
-    {
-        i++;
-        if (node->number == data->med)
-            data->med_pos = i;
-        if (node->number == data->max)
-            data->max_pos = i;
-        if (node->number == data->min)
-            data->min_pos = i;
-        node = node->next;
-    }
-    if (data->med_pos == -1)
-        fix_med_pos(stack, data);
-    printf("max [%d] min [%d] med_num [%d] med_pos [%d]\n", data->max, data->min, data->med, data->med_pos);
-}
+//     node = stack->node;
+//     i = 0;
+//     data->min = node->number;
+// 	data->max = node->number;
+// 	while (node)
+// 	{
+// 		if (data->min > node->number)
+// 			data->min = node->number;
+// 		if (data->max < node->number)
+// 			data->max = node->number;
+// 		node = node->next;
+// 	}
+//     data->med = (data->max + data->min) / 2;
+//     node = stack->node;
+//     while (node)
+//     {
+//         i++;
+//         if (node->number == data->med)
+//             data->med_pos = i;
+//         if (node->number == data->max)
+//             data->max_pos = i;
+//         if (node->number == data->min)
+//             data->min_pos = i;
+//         node = node->next;
+//     }
+//     if (data->med_pos == -1)
+//         fix_med_pos(stack, data);
+//     printf("max [%d] min [%d] med_num [%d] med_pos [%d]\n", data->max, data->min, data->med, data->med_pos);
+// }
 
 
 int     get_max_pos(t_stack *stackA)
@@ -100,40 +100,41 @@ int     get_max_pos(t_stack *stackA)
     return (pos);
 }
 
-void     get_min_pos(t_node *node, t_data *data)
-{
-    t_node  *temp;
-    int     i;
+// void     get_min_pos(t_node *node, t_data *data)
+// {
+//     t_node  *temp;
+//     int     i;
 
-    i = 0;
-    temp = node;
-    while (temp)
-    {
-        i++;
-        if (temp->number == data->min)
-            data->min_pos = i;
-        temp = temp->next;
-    }
-}
+//     i = 0;
+//     temp = node;
+//     while (temp)
+//     {
+//         i++;
+//         if (temp->number == data->min)
+//             data->min_pos = i;
+//         temp = temp->next;
+//     }
+// }
 
-void    update_min(t_node *node, t_data *data)
-{
-    t_node  *temp;
-    int     i;
+// void    update_min(t_node *node, t_data *data)
+// {
+//     t_node  *temp;
+//     int     i;
 
-    i = 0;
-    temp = node;
-    data->min = temp->number;
-    while (temp)
-    {
-        i++;
-        if (data->min > temp->number)
-            data->min = temp->number;
-        temp = temp->next;
-    }
-    get_min_pos(node, data);
-}
+//     i = 0;
+//     temp = node;
+//     data->min = temp->number;
+//     while (temp)
+//     {
+//         i++;
+//         if (data->min > temp->number)
+//             data->min = temp->number;
+//         temp = temp->next;
+//     }
+//     get_min_pos(node, data);
+// }
 
+// int     get_
 
 void    get_holds(t_stack *stack, t_data *data, int i)
 {
@@ -143,40 +144,36 @@ void    get_holds(t_stack *stack, t_data *data, int i)
 
     pos = 0;
     temp_hold = 0;
-    if (i == 2 || i == 0)
+
+    node = stack->node;
+    while (node)
     {
-        node = stack->node;
-        while (node)
+        pos++;
+        if ((node->number <= data->chunks[i]->max) && temp_hold == 0
+            && node->number >= data->chunks[i]->min)
         {
-            pos++;
-            if ((node->number <= data->med) && temp_hold == 0)
-            {
-                data->hold_one_pos = pos;
-                data->hold_one = node->number;
-                temp_hold = 1;
-            }
-            node = node->next;
+            data->hold_one_pos = pos;
+            data->hold_one = node->number;
+            temp_hold = 1;
         }
+        node = node->next;
     }
     pos = stack->length;
     temp_hold = 0;
-    if (i == 2 || i == 1)
+    node = ft_lstlast(stack->node);
+    while (node)
     {
-        node = ft_lstlast(stack->node);
-        while (node)
+        if ((node->number <= data->chunks[i]->max) && temp_hold == 0
+            && node->number >= data->chunks[i]->min)
         {
-            if ((node->number <= data->med) && temp_hold == 0)
-            {
-                data->hold_two_pos = pos;
-                data->hold_two = node->number;
-                temp_hold = 1;
-            }
-            node = node->previous;
-            pos--;
+            data->hold_two_pos = pos;
+            data->hold_two = node->number;
+            temp_hold = 1;
         }
+        node = node->previous;
+        pos--;
     }
-    // printf("- Hold_one is [%d] pos - [%d]\n", data->hold_one, data->hold_one_pos);
-    // printf("- Hold_two is [%d] pos - [%d]\n", data->hold_two, data->hold_two_pos);
-
+    printf("- Hold_one is [%d] pos - [%d]\n", data->hold_one, data->hold_one_pos);
+    printf("- Hold_two is [%d] pos - [%d]\n", data->hold_two, data->hold_two_pos);
 }
 

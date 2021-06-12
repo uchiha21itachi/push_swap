@@ -126,3 +126,29 @@ void    print_all_min_max(t_stack *stack, t_data *data)
     printf("\n\n");
 
 }
+
+
+void	print_chunks_data(t_data *data)
+{
+	int i;
+	int j;
+	
+	i = 0;
+	while (i < data->chunks_len)
+	{
+		printf("------CHUNK NUMBER [%d]-----\n", data->chunks[i]->num);
+		printf("Min[%d]\n", data->chunks[i]->min);
+		printf("Med[%d]\n", data->chunks[i]->med);
+		printf("Max[%d]\n", data->chunks[i]->max);
+		j = 0;
+	    printf("length of chunk [%d]\n", data->chunks[i]->length);
+		printf("Members of chunk[%d]\n", data->chunks[i]->num);
+		while (j < data->chunks[i]->length)
+		{
+			printf("[%d]\n", data->chunks[i]->members[j]);
+			j++;
+		}
+		i++;
+	}
+}
+
