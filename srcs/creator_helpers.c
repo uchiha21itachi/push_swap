@@ -1,5 +1,20 @@
 #include "../Includes/push_swap.h"
 
+int     get_max_num(t_stack *stackA)
+{
+    t_node  *node;
+    int     max;
+
+    node = stackA->node;
+    max = node->number;
+    while (node)
+    {
+        if (max < node->number)
+            max = node->number;
+        node = node->next;
+    }
+    return (max);
+}
 
 int     get_max_pos(t_stack *stackA)
 {
@@ -27,6 +42,26 @@ int     get_max_pos(t_stack *stackA)
     }
     return (pos);
 }
+
+int     get_num_pos(t_stack *stack, int num)
+{
+    t_node *node;
+    int     pos;
+    int     i;
+
+    i = 0;
+    pos = -1;
+    node = stack->node;
+    while (node)
+    {
+        i++;
+        if (node->number == num)
+            pos = i;
+        node = node->next;
+    }
+    return (pos);
+}
+
 
 void    get_holds(t_stack *stack, t_data *data, int i)
 {

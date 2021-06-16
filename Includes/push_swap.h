@@ -102,6 +102,10 @@ void    		sort_number(t_data *data, int n);
 void       		print_array(int *arr, int n);
 int     		get_req_pos(t_data *data, int num, int len);
 int			    get_opt_rot(t_stack *stackA, t_data *data, int j);
+void    		adjust_stackB(t_stack *stackA, t_stack *stackB, t_data *data);
+int     		get_num_pos(t_stack *stack, int num);
+int     		get_max_num(t_stack *stackA);
+
 
 void			print_chunks_data(t_data *data);
 
