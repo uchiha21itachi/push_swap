@@ -18,20 +18,6 @@ void    print_array(int *arr, int n)
 
 //---------------------------------------------------------------------
 
-int     get_req_pos(t_data *data, int num, int len)
-{
-    int i;
-
-    i = 0;
-    while (i < len)
-    {
-        if (num == data->req_pos[i])
-            return (i+1);
-        i++;
-    }
-    return (-1);
-}
-
  void swap(int *arr, int i, int largest) 
  {
     int temp;

@@ -15,10 +15,8 @@ srcs/create_hundred_moves.c \
 srcs/create_hundred_helpers.c \
 srcs/creator_helpers.c \
 srcs/free.c \
+srcs/libft_utils.c \
 srcs/print_all.c \
-
-LIBFT_SRCS = libft/ft_atoi.c \
-libft/ft_strncmp.c \
  
 
 GNL_SRCS = gnl/get_next_line.c \
@@ -29,19 +27,17 @@ OBJS = $(SRCS:.c=.o)
 
 GNL_OBJS = $(GNL_SRCS:.c=.o)
 
-LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
-
 all: ${NAME}
 	@printf "Makefile starts\n"
 
-$(NAME): $(OBJS) $(GNL_OBJS) $(LIBFT_OBJS)
-	ar rcs $@ $(OBJS) $(GNL_OBJS) $(LIBFT_OBJS)
+$(NAME): $(OBJS) $(GNL_OBJS)
+	ar rcs $@ $(OBJS) $(GNL_OBJS)
 	$(CC) $(NAME) -o push_swap
 # $(OBJS):$(SRCS)
 	# $(CC) $(CFLAGS) $(SRCS)
 
 clean:
-	$(RM) $(OBJS) $(GNL_OBJS) $(LIBFT_OBJS)
+	$(RM) $(OBJS) $(GNL_OBJS)
 
 fclean: clean
 	rm -f $(NAME)

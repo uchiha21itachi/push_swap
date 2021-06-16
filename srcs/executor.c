@@ -108,7 +108,7 @@ void     exec(char *ins, t_stack *stackA, t_stack *stackB)
     int     i;
 
     i = 1;
-    printf("\n\ninstruction to execute - [%s]\n", ins);
+    // printf("\n\ninstruction to execute - [%s]\n", ins);
     
     if (!ft_strncmp(ins, "R", 1))
         i   = exec_helper(ins, stackA, stackB);
@@ -136,5 +136,5 @@ void     exec(char *ins, t_stack *stackA, t_stack *stackB)
     }
     if (i == 1)
         update_moves(stackA, ins);
-	print_both(stackA->node, stackB->node);
+	// print_both(stackA->node, stackB->node);
 }   

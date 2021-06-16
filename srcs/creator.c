@@ -89,7 +89,12 @@ void	moves_creator(t_stack *stackA, t_stack *stackB)
         create_moves_five(stackA, stackB);
     else if (stackA->length > 5 && stackA->length <= 100)
         create_moves_hundred(stackA, stackB, sort_data);
-    printf("Length of stack - [%d]\n", stackA->length + stackB->length);
+    else if (stackA->length > 100 && stackA->length <= 500)
+    {
+        sort_data->chunks_div = 50;
+        create_moves_hundred(stackA, stackB, sort_data);
+    }
+    // printf("Length of stack - [%d]\n", stackA->length + stackB->length);
     free_data(sort_data);
    
 }

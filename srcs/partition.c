@@ -66,6 +66,6 @@ void       create_chunks(t_stack *stackA, t_stack *stackB, t_data *data)
         fill_chunks(data, i);
         i++;
     }
-    print_chunks_data(data);
+    // print_chunks_data(data);
     (void)stackB;    
 }
