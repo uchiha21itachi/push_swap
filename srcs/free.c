@@ -5,6 +5,7 @@ void	free_data(t_data *data)
 	int		i;
 
 	i = -1;
+	
 	while (++i < data->chunks_len)
 	{
 		free(data->chunks[i]->members);
@@ -22,7 +23,6 @@ void	free_moves(t_stack *stack)
 
 		if (stack->moves == NULL)
 		return ;
-		printf("inside free moves-\n");
 		new = stack->moves->next;
 		while (new != NULL)
 		{

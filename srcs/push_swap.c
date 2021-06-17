@@ -72,17 +72,17 @@ int		main(int argc, char **argv)
 	}
 	stackA = stack_init();
 	stackB = stack_init();
-	printf("args - [%s]\n", argv[1]);
+	// printf("args - [%s]\n", argv[1]);
 	fill_stack(argv, stackA);
-	print_both(stackA->node, stackB->node);
+	// print_both(stackA->node, stackB->node);
 	moves_creator(stackA, stackB);
-	if (check_sorted(stackA, stackB) == 1)
-		printf("Congratulations data sorted\n");
-	else
-	{
-		printf("BAAAAM What a Bummer \n");
-		temp_caller(stackA, stackB);
-	}
+	// if (check_sorted(stackA, stackB) == 1)
+		// printf("Congratulations data sorted\n");
+	// else
+	// {
+		// printf("BAAAAM What a Bummer \n");
+		// temp_caller(stackA, stackB);
+	// }
 	print_moves(stackA->moves);
 	free_all(stackA, stackB);
 	return (0);

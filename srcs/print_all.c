@@ -84,13 +84,14 @@ void	print_moves(t_move *move)
 	t_move	*temp;
 
 	temp = move;
-	printf("Showing all moves\n\n");
+	// printf("Showing all moves\n\n");
 	while (temp)
 	{
-		printf("[%d] - [%s]\n", temp->mov_num, temp->ins);
+		ft_tolower(temp->ins);
+		printf("%s\n",temp->ins);
 		temp = temp->next;
 	}
-	printf("-------------------------\n\n\n");
+	// printf("-------------------------\n\n\n");
 }
 
 

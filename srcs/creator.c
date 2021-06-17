@@ -9,10 +9,8 @@ void    create_five_helper(t_stack *stackA, t_stack *stackB)
             exec("SA", stackA, stackB);
             if  (check_sorted(stackA, stackB) == 1)
                 return ;
-            exec("PB", stackA, stackB);        
         }
-        else 
-            exec("PB", stackA, stackB);        
+        exec("PB", stackA, stackB);        
     }
     if (stackA->node->number > stackA->node->next->number &&
         stackB->node->number < stackB->node->next->number)
@@ -34,11 +32,14 @@ void    create_moves_five(t_stack *stackA, t_stack *stackB)
             exec("RRA", stackA, stackB);
             max_pos = get_max_pos(stackA);
         }        
-    }   
-    while (max_pos != stackA->length)
+    }
+    else
     {
-        exec("RA", stackA, stackB);
-        max_pos = get_max_pos(stackA);
+        while (max_pos != stackA->length)
+        {
+            exec("RA", stackA, stackB);
+            max_pos = get_max_pos(stackA);
+        }
     }
     create_five_helper(stackA, stackB);
     if  (check_sorted(stackA, stackB) == 1)
@@ -94,7 +95,8 @@ void	moves_creator(t_stack *stackA, t_stack *stackB)
         sort_data->chunks_div = 50;
         create_moves_hundred(stackA, stackB, sort_data);
     }
-    // printf("Length of stack - [%d]\n", stackA->length + stackB->length);
-    free_data(sort_data);
-   
+    if (stackA->length > 5 && stackA->length <= 500)
+        free_data(sort_data);
+    else
+        free(sort_data);
 }
