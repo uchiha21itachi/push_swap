@@ -81,9 +81,9 @@ void	moves_creator(t_stack *stackA, t_stack *stackB)
 
     t_data  *sort_data;
 
-    sort_data = data_init(stackA);
     if  (check_sorted(stackA, stackB) == 1)
                 return ;
+    sort_data = data_init(stackA);
 	if (stackA->length <=3)
         create_moves_three(stackA, stackB);
     else if (stackA->length > 3 && stackA->length <= 5)

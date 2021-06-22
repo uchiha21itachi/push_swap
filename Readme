@@ -1,7 +1,9 @@
 ARG=`ruby -e "puts (0..3).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker -v $ARG
 
 
-ARG=`ruby -e "puts (0..3).to_a.join(' ')"`; valgrind --leak-check=full --show-leak-kinds=definite --track-origins=yes  --read-var-info=yes ./a.out $ARG
+ARG=`ruby -e "puts (0..3).to_a.join(' ')"`; valgrind --leak-check=full --show-leak-kinds=definite --track-origins=yes  --read-var-info=yes ./push_swap $ARG
+
+ARG=`ruby -e "puts (0...5).to_a.shuffle.join(' ')"`; valgrind --leak-check=full --show-leak-kinds=definite --track-origins=yes  --read-var-info=yes ./push_swap $ARG | valgrind --leak-check=full --show-leak-kinds=definite --track-origin=yes ./checker $ARG
 
 
 length of stack and number of operations on average :

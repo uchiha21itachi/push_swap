@@ -130,7 +130,7 @@ void     exec(char *ins, t_stack *stackA, t_stack *stackB)
             push_A_B(stackA, stackB);
         else
         {
-    		printf("Wrong Move Input. Please enter again\n");
+    		printf("01Wrong Move Input. Please enter again\n");
             i = 0;
         }
     }

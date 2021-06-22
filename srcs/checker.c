@@ -1,4 +1,4 @@
-#include "../Includes/push_swap.h"
+#include "Includes/push_swap.h"
 
 int		check_line(char	*line)
 {
@@ -15,6 +15,7 @@ int		check_line(char	*line)
 	}
 	return (1);
 }
+
 
 int		check_sorted(t_stack *stackA, t_stack *stackB)
 {
@@ -33,10 +34,41 @@ int		check_sorted(t_stack *stackA, t_stack *stackB)
 	return (1);
 }
 
+int		temp_caller(t_stack *stackA, t_stack *stackB)
+{
+	int		fd;
+	char	*line;
+	int		ret;
+	int		sort;
+
+	fd = 0;
+	sort = 0;
+	while (((ret = get_next_line(fd, &line)) > 0))
+	{
+		if (check_line(line) != 1)
+		{
+			printf("Wrong Move Input. Please enter again\n");
+			free(line);
+			return (-1);
+		}
+		exec(line, stackA, stackB);
+		free(line);
+		if (sort == 1)
+			printf("Congratulations stack sorted\n Press enter to exit\n");
+	}
+	free(line);
+	return (sort = check_sorted(stackA, stackB));
+}
+
+
+
 int		main(int argc, char **argv)
 {
-	t_stack		*stackA;
+    t_stack		*stackA;
 	t_stack		*stackB;
+	int		i;
+
+	(void)argv;
 	if (argc != 2)
 	{
 		printf("Error - Please enter ARG as arguments\n");
@@ -45,16 +77,11 @@ int		main(int argc, char **argv)
 	stackA = stack_init();
 	stackB = stack_init();
 	fill_stack(argv, stackA);
-	moves_creator(stackA, stackB);
-	print_moves(stackA->moves);
+	i = temp_caller(stackA, stackB);
 	free_all(stackA, stackB);
-	return (0);
+	if (i <= 0)
+		printf("KO");
+	else
+		printf("OK");
+	return (1);
 }
-
-
-
-
-/*
-	Need to check duplicates in arg
-	Change printf and error mechanism
-*/
