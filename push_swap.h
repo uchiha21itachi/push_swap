@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yassharm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/23 06:10:29 by yassharm          #+#    #+#             */
+/*   Updated: 2021/06/23 06:10:31 by yassharm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "../gnl/get_next_line.h"
+#include "gnl/get_next_line.h"
 
 typedef struct	s_move
 {
@@ -59,6 +71,14 @@ typedef	struct s_data
 	int			*req_pos;
 	t_chunks	**chunks;
 }				t_data;
+
+
+void	swap_A_B(t_stack *stackA);
+void	push_A_B(t_stack *stackA, t_stack *stackB);
+void	reverse_rotate(t_stack *stackA);
+void	rotate_ra(t_stack *stackA);
+void 	swap(int *arr, int i, int largest);
+void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data);
 
 
 t_node			*ft_lstnew(int content);

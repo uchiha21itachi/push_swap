@@ -6,19 +6,18 @@ RM = rm -f   # rm command
 
 
 SRCS = srcs/push_swap.c\
-srcs/creator.c \
+srcs/moves_creator.c \
 srcs/partition.c \
-srcs/partition_helpers.c \
 srcs/create_hundred_moves.c \
 srcs/create_hundred_helpers.c \
-srcs/creator_helpers.c \
  
 COM_SRCS = srcs/stack_init.c \
+srcs/moves_init.c \
 srcs/list_crud.c \
 srcs/executor.c \
+srcs/executor_helpers.c \
 srcs/free.c \
 srcs/libft_utils.c \
-srcs/print_all.c \
 
 
 

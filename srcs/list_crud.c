@@ -1,18 +1,16 @@
-#include "../Includes/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_crud.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yassharm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/23 06:08:54 by yassharm          #+#    #+#             */
+/*   Updated: 2021/06/23 06:08:56 by yassharm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-t_move	*new_move(void)
-{
-	t_move	*move;
-
-	move = (t_move *)malloc(sizeof(t_move));
-	if (move == 0)
-		return (NULL);
-	move->mov_num = -1;
-	move->next = NULL;
-	move->ins = NULL;
-	return (move);
-}
+#include "../push_swap.h"
 
 t_node	*ft_lstnew(int number)
 {
@@ -43,7 +41,7 @@ void	ft_lstadd_front(t_stack *stack, t_node *new)
 
 void	ft_lstadd_back(t_stack *stack, t_node *new)
 {
-	t_node *ls;
+	t_node	*ls;
 
 	if (new == NULL)
 		return ;
@@ -59,7 +57,6 @@ void	ft_lstadd_back(t_stack *stack, t_node *new)
 	new->previous = ls;
 	ls->next = new;
 }
-
 
 t_node	*ft_lstlast(t_node *lst)
 {

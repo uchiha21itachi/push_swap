@@ -1,11 +1,23 @@
-#include "../Includes/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yassharm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/23 06:08:44 by yassharm          #+#    #+#             */
+/*   Updated: 2021/06/23 06:08:46 by yassharm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int		ft_isspace_isdigit(char c, char d)
+#include "../push_swap.h"
+
+int	ft_isspace_isdigit(char c, char d)
 {
 	if (d == 's')
 	{
-		if (c == ' ' || c == '\t' || c == '\n' ||
-			c == '\v' || c == '\f' || c == '\r')
+		if (c == ' ' || c == '\t' || c == '\n'
+			|| c == '\v' || c == '\f' || c == '\r')
 			return (1);
 	}
 	else if (d == 'd')
@@ -40,9 +52,9 @@ char	*remove_space_digit(char *line, char c)
 	return (line);
 }
 
-int		ft_atoi(const char *str)
+//Check atoi for int max and min pending
+int	ft_atoi(const char *str)
 {
-	//Check atoi for int max and min pending
 	int		sign;
 	int		result;
 
@@ -58,7 +70,7 @@ int		ft_atoi(const char *str)
 	while (*str)
 	{
 		if (*str >= '0' && *str <= '9')
-		{   
+		{
 			result *= 10;
 			result += (*(str++) - '0');
 		}
@@ -70,7 +82,7 @@ int		ft_atoi(const char *str)
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while ((*s1 || *s2) && (n > 0))
@@ -83,7 +95,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		}
 		else
 		{
-			x = *(unsigned char*)s1 - *(unsigned char*)s2;
+			x = *(unsigned char *)s1 - *(unsigned char *)s2;
 			break ;
 		}
 	}
@@ -95,18 +107,4 @@ int	ft_toupper(int c)
 	if (c > 96 && c < 123)
 		return (c - 32);
 	return (c);
-}
-
-void	ft_tolower(char *str)
-{
-	int		i;
-
-	i = 0;
-
-	while (str[i] != '\0')
-	{
-		if (str[i] > 64 && str[i] < 91)
-			str[i] = str[i] + 32;
-		i++;
-	}
 }

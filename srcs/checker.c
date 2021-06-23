@@ -1,10 +1,22 @@
-#include "Includes/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yassharm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/23 06:07:39 by yassharm          #+#    #+#             */
+/*   Updated: 2021/06/23 06:07:42 by yassharm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int		check_line(char	*line)
+#include "../push_swap.h"
+
+int	check_line(char	*line)
 {
-	int		i;
+	int	i;
 
-	i  = ft_strlen(line);
+	i = ft_strlen(line);
 	if (i < 1 || i > 3)
 		return (0);
 	i = 0;
@@ -16,8 +28,7 @@ int		check_line(char	*line)
 	return (1);
 }
 
-
-int		check_sorted(t_stack *stackA, t_stack *stackB)
+int	check_sorted(t_stack *stackA, t_stack *stackB)
 {
 	t_node	*temp;
 
@@ -34,7 +45,7 @@ int		check_sorted(t_stack *stackA, t_stack *stackB)
 	return (1);
 }
 
-int		temp_caller(t_stack *stackA, t_stack *stackB)
+int	temp_caller(t_stack *stackA, t_stack *stackB)
 {
 	int		fd;
 	char	*line;
@@ -43,7 +54,8 @@ int		temp_caller(t_stack *stackA, t_stack *stackB)
 
 	fd = 0;
 	sort = 0;
-	while (((ret = get_next_line(fd, &line)) > 0))
+	ret = get_next_line(fd, &line);
+	while (ret > 0)
 	{
 		if (check_line(line) != 1)
 		{
@@ -55,17 +67,16 @@ int		temp_caller(t_stack *stackA, t_stack *stackB)
 		free(line);
 		if (sort == 1)
 			printf("Congratulations stack sorted\n Press enter to exit\n");
+		ret = get_next_line(fd, &line);
 	}
 	free(line);
 	return (sort = check_sorted(stackA, stackB));
 }
 
-
-
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_stack		*stackA;
-	t_stack		*stackB;
+	t_stack	*stackA;
+	t_stack	*stackB;
 	int		i;
 
 	(void)argv;
@@ -78,9 +89,13 @@ int		main(int argc, char **argv)
 	stackB = stack_init();
 	fill_stack(argv, stackA);
 	i = temp_caller(stackA, stackB);
+	if (stackA->length > 500 || stackA->length < 0)
+		i = -1;
 	free_all(stackA, stackB);
-	if (i <= 0)
+	if (i == 0)
 		printf("KO");
+	else if (i < 0)
+		printf("ERROR");
 	else
 		printf("OK");
 	return (1);

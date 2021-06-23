@@ -1,4 +1,16 @@
-#include "Includes/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yassharm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/23 06:09:45 by yassharm          #+#    #+#             */
+/*   Updated: 2021/06/23 06:09:47 by yassharm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
 
 t_stack	*stack_init(void)
 {
@@ -16,7 +28,7 @@ t_stack	*stack_init(void)
 	return (stack);
 }
 
-t_stack		*insert_number(int num, t_stack *stack)
+t_stack	*insert_number(int num, t_stack *stack)
 {
 	t_node	*new;
 
@@ -26,11 +38,10 @@ t_stack		*insert_number(int num, t_stack *stack)
 	else
 		ft_lstadd_back(stack, new);
 	stack->length++;
-
-	return(stack);
+	return (stack);
 }
 
-void		fill_stack(char **argv, t_stack *stack)
+void	fill_stack(char **argv, t_stack *stack)
 {
 	char	*args;
 	int		number;
@@ -47,36 +58,7 @@ void		fill_stack(char **argv, t_stack *stack)
 	free(args);
 }	
 
-void	add_move_back(t_stack *stackA, t_move *move)
-{
-	t_move	*new;
-
-	new = stackA->moves;
-	while (new->next != NULL)
-		new = new->next;
-	move->mov_num = new->mov_num + 1;
-	new->next = move;
-}
-
-void	update_moves(t_stack *stackA, char *ins)
-{
-	t_move	*move;
-
-	move = new_move();
-	if (move == NULL)
-		return;
-	move->ins = ft_strdup(ins);
-	if (stackA->moves == NULL)
-	{
-		move->mov_num = 1;
-		stackA->moves = move;
-		return;
-	}
-	add_move_back(stackA, move);
-}
-
-
-t_data 	*data_init(t_stack *stackA)
+t_data	*data_init(t_stack *stackA)
 {
 	t_data	*data;
 
@@ -98,8 +80,8 @@ t_data 	*data_init(t_stack *stackA)
 	data->hold_two_pos = 0;
 	data->stack_len = stackA->length;
 	data->chunks_div = 20;
-    data->chunks_len = stackA->length / data->chunks_div;
-	if (stackA->length % data->chunks_div  != 0)
-        data->chunks_len++;
+	data->chunks_len = stackA->length / data->chunks_div;
+	if (stackA->length % data->chunks_div != 0)
+		data->chunks_len++;
 	return (data);
 }
