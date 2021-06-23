@@ -63,14 +63,22 @@ int	main(int argc, char **argv)
 	t_stack	*stackA;
 	t_stack	*stackB;
 
-	if (argc != 2)
+	int i;
+	i = 0;
+	while (i < argc)
 	{
-		printf("Error - Please enter ARG as arguments\n");
-		return (0);
+		printf("[%s]\n", argv[i]);
+		i++;
 	}
+	// if (argc != 2)
+	// {
+		// printf("Error - Please enter ARG as arguments\n");
+		// return (0);
+	// }
+	(void)argc;
 	stackA = stack_init();
 	stackB = stack_init();
-	fill_stack(argv, stackA);
+	fill_stack(argc, argv, stackA);
 	moves_creator(stackA, stackB);
 	print_moves(stackA->moves);
 	free_all(stackA, stackB);

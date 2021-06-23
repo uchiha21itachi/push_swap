@@ -78,8 +78,14 @@ void	push_A_B(t_stack *stackA, t_stack *stackB);
 void	reverse_rotate(t_stack *stackA);
 void	rotate_ra(t_stack *stackA);
 void 	swap(int *arr, int i, int largest);
+
 void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data);
 
+//main.c
+void	ft_putstr(char *str);
+
+//stack_init.c
+void			fill_stack(int argc, char **argv, t_stack *stack);
 
 t_node			*ft_lstnew(int content);
 void			ft_lstadd_front(t_stack *stack, t_node *new);
@@ -89,7 +95,6 @@ void			ft_lstadd_back(t_stack *stack, t_node *new);
 int				ft_atoi(const char *str);
 char			*remove_space_digit(char *line, char c);
 t_stack			*stack_init(void);
-void			fill_stack(char **argv, t_stack *stack);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			exec(char *ins, t_stack *stackA, t_stack *stackB);
 void			print_stack(t_stack *stack);

@@ -41,7 +41,7 @@ t_stack	*insert_number(int num, t_stack *stack)
 	return (stack);
 }
 
-void	fill_stack(char **argv, t_stack *stack)
+void	fill_stack(int argc, char **argv, t_stack *stack)
 {
 	char	*args;
 	int		number;

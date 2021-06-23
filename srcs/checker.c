@@ -12,6 +12,22 @@
 
 #include "../push_swap.h"
 
+void	ft_putstr(char *str)
+{
+	int		len;
+	int		i;
+	int		ret;
+
+	i = 0;
+	len = ft_strlen(str);
+	while (i < len)
+	{
+		ret = write(1, &str[i], 1);
+		i++;
+	}
+	(void)ret;
+}
+
 int	check_line(char	*line)
 {
 	int	i;
@@ -59,14 +75,12 @@ int	temp_caller(t_stack *stackA, t_stack *stackB)
 	{
 		if (check_line(line) != 1)
 		{
-			printf("Wrong Move Input. Please enter again\n");
+			ft_putstr("Wrong Move Input. Please enter again\n");
 			free(line);
 			return (-1);
 		}
 		exec(line, stackA, stackB);
 		free(line);
-		if (sort == 1)
-			printf("Congratulations stack sorted\n Press enter to exit\n");
 		ret = get_next_line(fd, &line);
 	}
 	free(line);
@@ -80,23 +94,24 @@ int	main(int argc, char **argv)
 	int		i;
 
 	(void)argv;
-	if (argc != 2)
-	{
-		printf("Error - Please enter ARG as arguments\n");
-		return (0);
-	}
+	(void)argc;
+	// if (argc != 2)
+	// {
+	// 	printf("Error - Please enter ARG as arguments\n");
+	// 	return (0);
+	// }
 	stackA = stack_init();
 	stackB = stack_init();
-	fill_stack(argv, stackA);
+	fill_stack(argc, argv, stackA);
 	i = temp_caller(stackA, stackB);
 	if (stackA->length > 500 || stackA->length < 0)
 		i = -1;
 	free_all(stackA, stackB);
 	if (i == 0)
-		printf("KO");
+		ft_putstr("KO");
 	else if (i < 0)
-		printf("ERROR");
+		ft_putstr("ERROR");
 	else
-		printf("OK");
+		ft_putstr("OK");
 	return (1);
 }
