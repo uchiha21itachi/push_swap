@@ -18,6 +18,7 @@ srcs/executor.c \
 srcs/executor_helpers.c \
 srcs/free.c \
 srcs/libft_utils.c \
+srcs/utils.c \
 
 
 

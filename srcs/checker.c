@@ -12,21 +12,6 @@
 
 #include "../push_swap.h"
 
-void	ft_putstr(char *str)
-{
-	int		len;
-	int		i;
-	int		ret;
-
-	i = 0;
-	len = ft_strlen(str);
-	while (i < len)
-	{
-		ret = write(1, &str[i], 1);
-		i++;
-	}
-	(void)ret;
-}
 
 int	check_line(char	*line)
 {

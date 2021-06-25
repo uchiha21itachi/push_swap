@@ -12,6 +12,48 @@
 
 #include "../push_swap.h"
 
+//----------------------------------------------------------------
+void	print_both(t_node *stackA, t_node *stackB)
+{
+	t_node	*tempA;
+	t_node	*tempB;
+
+	tempA = stackA;
+	printf("--------------StackA--------------------\n");
+	while (tempA)
+	{
+		if (tempA->previous != NULL && tempA->next != NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", tempA->previous->number, tempA->number, tempA->next->number);
+		else if (tempA->previous == NULL && tempA->next != NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", tempA->previous, tempA->number, tempA->next->number);
+		else if (tempA->previous != NULL && tempA->next == NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", tempA->previous->number, tempA->number, tempA->next);
+		else if (tempA->previous == NULL && tempA->next == NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", tempA->previous, tempA->number, tempA->next);
+		tempA = tempA->next;
+	}
+
+	printf("--------------StackB--------------------\n");
+	tempB = stackB;
+	while (tempB)
+	{
+		if (tempB->previous != NULL && tempB->next != NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", tempB->previous->number, tempB->number, tempB->next->number);
+		else if (tempB->previous == NULL && tempB->next != NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", tempB->previous, tempB->number, tempB->next->number);
+		else if (tempB->previous != NULL && tempB->next == NULL)
+			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", tempB->previous->number, tempB->number, tempB->next);
+		else if (tempB->previous == NULL && tempB->next == NULL)
+			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", tempB->previous, tempB->number, tempB->next);
+		tempB = tempB->next;
+	}
+
+	printf("\n-----------------XXXXXXXXXXXXXXXXXXX----------------\n\n\n");
+}
+
+//---------------------------------------------------------------------------------------
+
+
 void	print_moves(t_move *move)
 {
 	t_move	*temp;
@@ -63,23 +105,13 @@ int	main(int argc, char **argv)
 	t_stack	*stackA;
 	t_stack	*stackB;
 
-	int i;
-	i = 0;
-	while (i < argc)
-	{
-		printf("[%s]\n", argv[i]);
-		i++;
-	}
-	// if (argc != 2)
-	// {
-		// printf("Error - Please enter ARG as arguments\n");
-		// return (0);
-	// }
-	(void)argc;
 	stackA = stack_init();
 	stackB = stack_init();
 	fill_stack(argc, argv, stackA);
-	moves_creator(stackA, stackB);
+	if (stackA->error == 0)
+		moves_creator(stackA, stackB);
+	else
+		ft_putstr("Error in Args \n");
 	print_moves(stackA->moves);
 	free_all(stackA, stackB);
 	return (0);

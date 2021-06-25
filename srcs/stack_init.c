@@ -12,22 +12,6 @@
 
 #include "../push_swap.h"
 
-t_stack	*stack_init(void)
-{
-	t_stack	*stack;
-
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (stack == NULL)
-	{
-		printf("malloc error in stack init\n");
-		return (NULL);
-	}
-	stack->length = 0;
-	stack->node = NULL;
-	stack->moves = NULL;
-	return (stack);
-}
-
 t_stack	*insert_number(int num, t_stack *stack)
 {
 	t_node	*new;
@@ -41,20 +25,57 @@ t_stack	*insert_number(int num, t_stack *stack)
 	return (stack);
 }
 
+void	check_dup_number(int number, t_stack *stack)
+{
+	t_node	*node;
+
+	node = stack->node;
+	while (node)
+	{
+		if (node->number == number)
+			stack->error = 1;
+		node = node->next;
+	}
+}
+
+void	check_args(char *temps, t_stack *stack)
+{
+	int	number;
+
+	while (*temps != '\0')
+	{
+		while (ft_isspace_isdigit(*temps, 's'))
+			temps++;
+		if (*temps != '\0')
+		{
+			number = ft_atoi(temps);
+			check_dup_number(number, stack);
+			temps = remove_space_digit(temps, 'b');
+			stack = insert_number(number, stack);
+		}
+	}
+}
+
 void	fill_stack(int argc, char **argv, t_stack *stack)
 {
 	char	*args;
-	int		number;
 	char	*temps;
+	int		i;
 
-	args = ft_strdup(argv[1]);
-	temps = args;
-	while (*temps != '\0')
+	i = 1;
+	args = ft_strdup("");
+	while (i < argc)
 	{
-		number = ft_atoi(temps);
-		temps = remove_space_digit(temps, 'b');
-		stack = insert_number(number, stack);
+		temps = args;
+		args = ft_strjoin(temps, argv[i]);
+		free(temps);
+		temps = args;
+		args = ft_strjoin(temps, " ");
+		free(temps);
+		i++;
 	}
+	temps = args;
+	check_args(temps, stack);
 	free(args);
 }	
 

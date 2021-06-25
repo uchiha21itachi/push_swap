@@ -37,6 +37,7 @@ typedef	struct s_stack
 	struct 	s_node	*node;
 	struct  s_move	*moves;
 	int				length;
+	int				error;
 }				t_stack;
 
 typedef struct s_chunks
@@ -86,6 +87,9 @@ void	ft_putstr(char *str);
 
 //stack_init.c
 void			fill_stack(int argc, char **argv, t_stack *stack);
+
+int	ft_isspace_isdigit(char c, char d);
+void	ft_putstr(char *str);
 
 t_node			*ft_lstnew(int content);
 void			ft_lstadd_front(t_stack *stack, t_node *new);
