@@ -34,8 +34,14 @@ void	create_five_helper(t_stack *stackA, t_stack *stackB)
 		exec("PB", stackA, stackB);
 	}
 	if (stackA->node->number > stackA->node->next->number
-		&& stackB->node->number < stackB->node->next->number)
-		exec("SS", stackA, stackB);
+		&& stackB->length > 1)
+	{
+		if (stackB->node->number < stackB->node->next->number)
+			exec("SS", stackA, stackB);
+		else
+			exec("SA", stackA, stackB);
+
+	}
 	else if (stackA->node->number > stackA->node->next->number)
 		exec("SA", stackA, stackB);
 	if (check_sorted(stackA, stackB) == 1)

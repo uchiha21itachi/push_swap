@@ -33,7 +33,7 @@ void	check_dup_number(int number, t_stack *stack)
 	while (node)
 	{
 		if (node->number == number)
-			stack->error = 1;
+			stack->error = 2;
 		node = node->next;
 	}
 }
@@ -41,7 +41,18 @@ void	check_dup_number(int number, t_stack *stack)
 void	check_args(char *temps, t_stack *stack)
 {
 	int	number;
+	int i;
 
+	i = 0;
+	while (temps[i] != '\0')
+	{
+		if (!ft_isspace_isdigit(temps[i], 'b') && temps[i] != '-')
+		{
+			stack->error = 1;
+			return;
+		}
+		i++;
+	}
 	while (*temps != '\0')
 	{
 		while (ft_isspace_isdigit(*temps, 's'))

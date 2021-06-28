@@ -25,6 +25,13 @@ int	ft_isspace_isdigit(char c, char d)
 		if (c >= 48 && c <= 57)
 			return (1);
 	}
+	else if (d == 'b')
+	{
+		if (c == ' ' || c == '\t' || c == '\n'
+			|| c == '\v' || c == '\f' || c == '\r'
+			|| (c >= 48 && c <= 57))
+			return (1);
+	}
 	return (0);
 }
 

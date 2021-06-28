@@ -108,7 +108,7 @@ int	main(int argc, char **argv)
 	stackA = stack_init();
 	stackB = stack_init();
 	fill_stack(argc, argv, stackA);
-	if (stackA->error == 0)
+	if (stackA->error == 0 && stackA->length > 0)
 		moves_creator(stackA, stackB);
 	else
 		ft_putstr("Error in Args \n");
@@ -117,5 +117,4 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-/* Need to check duplicates in arg
- Change printf and error mechanism */
+/*  Change printf and error mechanism */
