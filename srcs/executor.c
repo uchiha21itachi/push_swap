@@ -34,7 +34,7 @@ int	exec_helper(char *ins, t_stack *stackA, t_stack *stackB)
 	}
 	else
 	{
-		printf("Wrong Move Input. Please enter again\n");
+		ft_putstr("Wrong Move Input. Please enter again\n");
 		return (0);
 	}
 	return (1);

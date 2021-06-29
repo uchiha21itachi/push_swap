@@ -60,10 +60,7 @@ void	og_data_init(t_stack *stackA, t_data *data)
 	data->og_stack = (int *)malloc(sizeof(int) * stackA->length);
 	data->req_pos = (int *)malloc(sizeof(int) * stackA->length);
 	if (data->og_stack == NULL || data->req_pos == NULL)
-	{
-		printf("malloc error ogdatainit01\n");
 		return ;
-	}
 	node = stackA->node;
 	while (node)
 	{
@@ -105,7 +102,7 @@ void	create_chunks(t_stack *stackA, t_stack *stackB, t_data *d)
 	og_data_init(stackA, d);
 	d->chunks = (t_chunks **)malloc(sizeof(t_chunks *) * d->chunks_len);
 	if (!d->chunks)
-		printf("malloc error chunks\n");
+		return ;
 	while (i < d->chunks_len)
 	{
 		d->chunks[i] = (t_chunks *)malloc(sizeof(t_chunks));

@@ -13,29 +13,29 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "gnl/get_next_line.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "gnl/get_next_line.h"	
 
-typedef struct	s_move
+typedef struct s_move
 {
 	char			*ins;
 	int				mov_num;
-	struct	s_move	*next;
+	struct s_move	*next;
 }				t_move;
 
-typedef struct	s_node
+typedef struct s_node
 {
 	int				number;
-	struct	s_node	*next;
-	struct	s_node	*previous;
+	struct s_node	*next;
+	struct s_node	*previous;
 }				t_node;
 
-typedef	struct s_stack
+typedef struct s_stack
 {
-	struct 	s_node	*node;
-	struct  s_move	*moves;
+	struct s_node	*node;
+	struct s_move	*moves;
 	int				length;
 	int				error;
 }				t_stack;
@@ -51,19 +51,12 @@ typedef struct s_chunks
 
 }				t_chunks;
 
-typedef	struct s_data
+typedef struct s_data
 {
-	int			min;
-	int			min_pos;
-	int			max;
-	int			max_pos;
-	int			med;
-	int			med_pos;
 	int			hold_one;
 	int			hold_one_pos;
 	int			hold_two;
 	int			hold_two_pos;
-
 	int			chunks_div;
 	int			chunks_len;
 	int			stack_len;
@@ -73,72 +66,65 @@ typedef	struct s_data
 	t_chunks	**chunks;
 }				t_data;
 
+//utils.c 4/5
+int		check_sorted(t_stack *stackA, t_stack *stackB);
+void	ft_putstr(char *str);
+t_stack	*stack_init(void);
+void	ft_tolower(char *str);
 
-void	swap_A_B(t_stack *stackA);
-void	push_A_B(t_stack *stackA, t_stack *stackB);
+//stack_init.c 5/5
+void	fill_stack(int argc, char **argv, t_stack *stack);
+t_data	*data_init(t_stack *stackA);
+
+//libft_utils.c 5/5
+int		ft_toupper(int c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_atoi(const char *str);
+char	*remove_space_digit(char *line, char c);
+int		ft_isspace_isdigit(char c, char d);
+
+//free.c 4/5
+void	free_data(t_data *data);
+void	free_all(t_stack *stackA, t_stack *stackB);
+
+//list_crud.c 4/4
+t_node	*ft_lstlast(t_node *lst);
+void	ft_lstadd_back(t_stack *stack, t_node *new);
+void	ft_lstadd_front(t_stack *stack, t_node *new);
+t_node	*ft_lstnew(int number);
+
+//moves_creator.c 5/5 swap.c can be moved
+void	moves_creator(t_stack *stackA, t_stack *stackB);
+
+//moves_init.c 4/5
+t_move	*new_move(void);
+void	add_move_back(t_stack *stackA, t_move *move);
+void	update_moves(t_stack *stackA, char *ins);
+void	swap(int *arr, int i, int largest);
+
+//executor.c 2/5
+void	exec(char *ins, t_stack *stackA, t_stack *stackB);
+
+//executor_helper.c 4/5
 void	reverse_rotate(t_stack *stackA);
 void	rotate_ra(t_stack *stackA);
-void 	swap(int *arr, int i, int largest);
+void	push_A_B(t_stack *stackA, t_stack *stackB);
+void	swap_A_B(t_stack *stackA);
 
+//create_hundred_moves 5/5
+void	create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data);
+int		get_num_pos(t_stack *stack, int num);
+int		get_max_num(t_stack *stackA);
+int		get_max_pos(t_stack *stackA);
+void	get_holds(t_stack *stack, t_data *data, int i);
+
+//create_hundred_helperes 5/5
+void	cal_stackB_rot(t_stack *stackA, t_stack *stackB, int stop_num);
+void	cal_stackA_rot(t_stack *stackA, t_stack *stackB, t_data *data);
+void	adjust_stackB(t_stack *stackA, t_stack *stackB);
 void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data);
 
-//main.c
-void	ft_putstr(char *str);
-
-//stack_init.c
-void			fill_stack(int argc, char **argv, t_stack *stack);
-
-int	ft_isspace_isdigit(char c, char d);
-void	ft_putstr(char *str);
-
-t_node			*ft_lstnew(int content);
-void			ft_lstadd_front(t_stack *stack, t_node *new);
-int				ft_lstsize(t_node *lst);
-t_node			*ft_lstlast(t_node *lst);
-void			ft_lstadd_back(t_stack *stack, t_node *new);
-int				ft_atoi(const char *str);
-char			*remove_space_digit(char *line, char c);
-t_stack			*stack_init(void);
-int				ft_strncmp(const char *s1, const char *s2, size_t n);
-void			exec(char *ins, t_stack *stackA, t_stack *stackB);
-void			print_stack(t_stack *stack);
-void			print_numbers(t_node *list, char x);
-void			print_both(t_node *stackA, t_node *stackB);
-void			free_stack(t_stack *stack);
-void			free_data(t_data *data);
-void			free_all(t_stack *stackA, t_stack *stackB);
-int				ft_toupper(int c);
-void			update_moves(t_stack *stackA, char *ins);
-void			free_moves(t_stack *stack);
-void			print_moves(t_move *move);
-t_move			*new_move(void);
-void			moves_creator(t_stack *stackA, t_stack *stackB);
-int				check_sorted(t_stack *stackA, t_stack *stackB);
-int    			get_max_pos(t_stack *stackA);
-void     		get_min_pos(t_node *node, t_data *data);
-void    		create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data);
-void    		get_median(t_stack *stack, t_data *data);
-t_data 			*data_init(t_stack *stackA);
-void		    update_min(t_node *node, t_data *data);
-void    		get_holds(t_stack *stack, t_data *data, int i);
-void   			print_all_min_max(t_stack *stack, t_data *data);
-int 			check_stack_sort(t_stack *stack);
-void   			cal_stackA_rot(t_stack *stackA, t_stack *stackB, t_data *data);
-void    		cal_stackB_rot(t_stack *stackA, t_stack *stackB, int req_pos);
-void   			sort_stackB(t_stack *stackA, t_stack *stackB, int req_pos, int stop_num);
-void       		create_chunks(t_stack *stackA, t_stack *stackB, t_data *data);
-void    		sort_number(t_data *data, int n);
-void       		print_array(int *arr, int n);
-int     		get_req_pos(t_data *data, int num, int len);
-int			    get_opt_rot(t_stack *stackA, t_data *data, int j);
-void    		adjust_stackB(t_stack *stackA, t_stack *stackBl);
-int     		get_num_pos(t_stack *stack, int num);
-int     		get_max_num(t_stack *stackA);
-void			ft_tolower(char *str);
-
-
-void			print_chunks_data(t_data *data);
-
+//partition.c
+void	create_chunks(t_stack *stackA, t_stack *stackB, t_data *d);
 
 #endif
-

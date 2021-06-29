@@ -41,7 +41,7 @@ void	check_dup_number(int number, t_stack *stack)
 void	check_args(char *temps, t_stack *stack)
 {
 	int	number;
-	int i;
+	int	i;
 
 	i = 0;
 	while (temps[i] != '\0')
@@ -49,7 +49,7 @@ void	check_args(char *temps, t_stack *stack)
 		if (!ft_isspace_isdigit(temps[i], 'b') && temps[i] != '-')
 		{
 			stack->error = 1;
-			return;
+			return ;
 		}
 		i++;
 	}
@@ -96,16 +96,7 @@ t_data	*data_init(t_stack *stackA)
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (data == NULL)
-	{
-		printf("malloc error datainit01");
 		return (NULL);
-	}
-	data->max = 0;
-	data->min = 0;
-	data->med = 0;
-	data->med_pos = -1;
-	data->max_pos = -1;
-	data->min_pos = -1;
 	data->hold_one = 0;
 	data->hold_one_pos = 0;
 	data->hold_two = 0;

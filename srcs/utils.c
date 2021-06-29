@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yassharm <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/29 04:38:20 by yassharm          #+#    #+#             */
+/*   Updated: 2021/06/29 04:38:22 by yassharm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 t_stack	*stack_init(void)
@@ -6,17 +18,13 @@ t_stack	*stack_init(void)
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
-	{
-		printf("malloc error in stack init\n");
 		return (NULL);
-	}
 	stack->length = 0;
 	stack->error = 0;
 	stack->node = NULL;
 	stack->moves = NULL;
 	return (stack);
 }
-
 
 void	ft_putstr(char *str)
 {
@@ -32,4 +40,34 @@ void	ft_putstr(char *str)
 		i++;
 	}
 	(void)ret;
+}
+
+int	check_sorted(t_stack *stackA, t_stack *stackB)
+{
+	t_node	*temp;
+
+	if (stackB->node != NULL)
+		return (0);
+	temp = stackA->node;
+	while (temp->next != NULL)
+	{
+		if (!(temp->number < temp->next->number))
+			return (0);
+		temp = temp->next;
+	}
+	temp = NULL;
+	return (1);
+}
+
+void	ft_tolower(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] > 64 && str[i] < 91)
+			str[i] = str[i] + 32;
+		i++;
+	}
 }

@@ -6,12 +6,11 @@
 /*   By: yassharm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 06:07:39 by yassharm          #+#    #+#             */
-/*   Updated: 2021/06/23 06:07:42 by yassharm         ###   ########.fr       */
+/*   Updated: 2021/06/29 04:38:13 by yassharm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
 
 int	check_line(char	*line)
 {
@@ -26,23 +25,6 @@ int	check_line(char	*line)
 		line[i] = ft_toupper(line[i]);
 		i++;
 	}
-	return (1);
-}
-
-int	check_sorted(t_stack *stackA, t_stack *stackB)
-{
-	t_node	*temp;
-
-	if (stackB->node != NULL)
-		return (0);
-	temp = stackA->node;
-	while (temp->next != NULL)
-	{
-		if (!(temp->number < temp->next->number))
-			return (0);
-		temp = temp->next;
-	}
-	temp = NULL;
 	return (1);
 }
 
@@ -78,13 +60,6 @@ int	main(int argc, char **argv)
 	t_stack	*stackB;
 	int		i;
 
-	(void)argv;
-	(void)argc;
-	// if (argc != 2)
-	// {
-	// 	printf("Error - Please enter ARG as arguments\n");
-	// 	return (0);
-	// }
 	stackA = stack_init();
 	stackB = stack_init();
 	fill_stack(argc, argv, stackA);

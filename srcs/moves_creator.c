@@ -12,13 +12,16 @@
 
 #include "../push_swap.h"
 
-void 	swap(int *arr, int i, int largest)
+void	empty_stack(t_stack *stackA, t_stack *stackB)
 {
-	int	temp;
-
-	temp = arr[i];
-	arr[i] = arr[largest];
-	arr[largest] = temp;
+	if (check_sorted(stackA, stackB) == 1)
+		return ;
+	while (stackB->length != 0)
+	{
+		exec("PA", stackA, stackB);
+		if (stackA->node->number > stackA->node->next->number)
+			exec("SA", stackA, stackB);
+	}
 }
 
 void	create_five_helper(t_stack *stackA, t_stack *stackB)
@@ -40,18 +43,9 @@ void	create_five_helper(t_stack *stackA, t_stack *stackB)
 			exec("SS", stackA, stackB);
 		else
 			exec("SA", stackA, stackB);
-
 	}
 	else if (stackA->node->number > stackA->node->next->number)
 		exec("SA", stackA, stackB);
-	if (check_sorted(stackA, stackB) == 1)
-		return ;
-	while (stackB->length != 0)
-	{
-		exec("PA", stackA, stackB);
-		if (stackA->node->number > stackA->node->next->number)
-			exec("SA", stackA, stackB);
-	}
 }
 
 void	create_moves_five(t_stack *stackA, t_stack *stackB)
@@ -76,6 +70,7 @@ void	create_moves_five(t_stack *stackA, t_stack *stackB)
 		}
 	}
 	create_five_helper(stackA, stackB);
+	empty_stack(stackA, stackB);
 }
 
 void	create_moves_three(t_stack *stackA, t_stack *stackB)

@@ -59,7 +59,6 @@ char	*remove_space_digit(char *line, char c)
 	return (line);
 }
 
-//Check atoi for int max and min pending
 int	ft_atoi(const char *str)
 {
 	int		sign;
