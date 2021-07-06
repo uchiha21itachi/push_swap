@@ -102,9 +102,5 @@ t_data	*data_init(t_stack *stackA)
 	data->hold_two = 0;
 	data->hold_two_pos = 0;
 	data->stack_len = stackA->length;
-	data->chunks_div = 20;
-	data->chunks_len = stackA->length / data->chunks_div;
-	if (stackA->length % data->chunks_div != 0)
-		data->chunks_len++;
 	return (data);
 }

@@ -53,7 +53,7 @@ void	update_moves(t_stack *stackA, char *ins)
 	add_move_back(stackA, move);
 }
 
-void 	swap(int *arr, int i, int largest)
+void	swap(int *arr, int i, int largest)
 {
 	int	temp;
 

@@ -109,10 +109,15 @@ void	moves_creator(t_stack *stackA, t_stack *stackB)
 	else if (stackA->length > 3 && stackA->length <= 5)
 		create_moves_five(stackA, stackB);
 	else if (stackA->length > 5 && stackA->length <= 100)
+	{
+		sort_data->chunks_div = 20;
+		sort_data->chunks_len = stackA->length / sort_data->chunks_div;
 		create_moves_hundred(stackA, stackB, sort_data);
+	}
 	else if (stackA->length > 100 && stackA->length <= 500)
 	{
 		sort_data->chunks_div = 50;
+		sort_data->chunks_len = stackA->length / sort_data->chunks_div;
 		create_moves_hundred(stackA, stackB, sort_data);
 	}
 	if (stackA->length > 5 && stackA->length <= 500)

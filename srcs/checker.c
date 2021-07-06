@@ -42,7 +42,6 @@ int	temp_caller(t_stack *stackA, t_stack *stackB)
 	{
 		if (check_line(line) != 1)
 		{
-			ft_putstr("Wrong Move Input. Please enter again\n");
 			free(line);
 			return (-1);
 		}
@@ -63,15 +62,21 @@ int	main(int argc, char **argv)
 	stackA = stack_init();
 	stackB = stack_init();
 	fill_stack(argc, argv, stackA);
+	if (stackA->length <= 0)
+	{
+		ft_putstr("Error in args\n");
+		free_all(stackA, stackB);
+		return (1);
+	}
 	i = temp_caller(stackA, stackB);
-	if (stackA->length > 500 || stackA->length < 0)
+	if (stackA->error != 0)
 		i = -1;
 	free_all(stackA, stackB);
 	if (i == 0)
-		ft_putstr("KO");
+		ft_putstr("KO\n");
 	else if (i < 0)
-		ft_putstr("ERROR");
+		ft_putstr("Error\n");
 	else
-		ft_putstr("OK");
+		ft_putstr("OK\n");
 	return (1);
 }
