@@ -12,6 +12,22 @@
 
 #include "../push_swap.h"
 
+int	check_stack_sort(t_stack *stack)
+{
+	int		ret;
+	t_node	*temp;
+
+	temp = stack->node;
+	ret = 1;
+	while (temp->next != NULL)
+	{
+		if (temp->number < temp->next->number)
+			ret = 0;
+		temp = temp->next;
+	}
+	return (ret);
+}
+
 t_move	*new_move(void)
 {
 	t_move	*move;

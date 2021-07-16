@@ -104,19 +104,8 @@ int	get_num_pos(t_stack *stack, int num)
 
 void	create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data)
 {
-	int	max;
-	int	i;
-
 	if (stackA->length % data->chunks_div != 0)
 		data->chunks_len++;
 	create_chunks(stackA, stackB, data);
 	move_to_stackB(stackA, stackB, data);
-	max = get_max_num(stackB);
-	cal_stackB_rot(stackA, stackB, max);
-	i = stackB->length;
-	while (i > 0)
-	{
-		exec("PA", stackA, stackB);
-		i--;
-	}
 }

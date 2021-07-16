@@ -12,26 +12,32 @@
 
 #include "../push_swap.h"
 
-int	check_stack_sort(t_stack *stack)
+void	move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int num_pos)
 {
-	int		ret;
-	t_node	*temp;
+	int	max;
+	int k;
 
-	temp = stack->node;
-	ret = 1;
-	while (temp->next != NULL)
+	if (num_pos >= 0)
 	{
-		if (temp->number < temp->next->number)
-			ret = 0;
-		temp = temp->next;
+		data->hold_one_pos = num_pos;
+		data->hold_two_pos = num_pos;
+		cal_stackA_rot(stackA, stackB, data);
 	}
-	return (ret);
+	max = get_max_num(stackB);
+	cal_stackB_rot(stackA, stackB, max);
+	k = stackB->length;
+	while (k > 0)
+	{
+		exec("PA", stackA, stackB);
+		k--;
+	}
 }
 
 void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
 {
 	int	i;
 	int	j;
+	int num_pos;
 
 	j = data->chunks_len - 1;
 	(void)stackB;
@@ -47,6 +53,15 @@ void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
 			get_holds(stackA, data, j);
 			i--;
 		}
+		num_pos = -1;
+		if (data->chunks_len > 1)
+		{
+			if (j != data->chunks_len - 1)
+				num_pos = get_num_pos(stackA, data->chunks[j + 1]->min);
+			else
+				num_pos = get_num_pos(stackA, stackA->node->number);
+		}
+		move_to_stackA(stackA, stackB, data, num_pos);
 		j--;
 	}
 }

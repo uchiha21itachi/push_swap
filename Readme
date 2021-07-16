@@ -8,13 +8,13 @@ ARG=`ruby -e "puts (0...5).to_a.shuffle.join(' ')"`; ./push_swap $ARG | valgrind
 
 length of stack and number of operations on average :
 
-3 == 5 (max 5)
+3 == 5 (max 5) [3]
 
-5 == 11 (max 12)
+5 == 11 (max 12) [11]
 
-100 == 833 (max 900)
+100 == 833 (max 900) [874]
 
-500 == 7900 (max 8500)
+500 == 7900 (max 8500) []
 
 
 

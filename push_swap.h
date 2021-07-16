@@ -66,59 +66,59 @@ typedef struct s_data
 	t_chunks	**chunks;
 }				t_data;
 
-//utils.c 4/5
+//utils.c
 int		check_sorted(t_stack *stackA, t_stack *stackB);
 void	ft_putstr(char *str);
 t_stack	*stack_init(void);
 void	ft_tolower(char *str);
 
-//stack_init.c 5/5
+//stack_init.c
 void	fill_stack(int argc, char **argv, t_stack *stack);
 t_data	*data_init(t_stack *stackA);
 
-//libft_utils.c 5/5
+//libft_utils.c
 int		ft_toupper(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *str);
 char	*remove_space_digit(char *line, char c);
 int		ft_isspace_isdigit(char c, char d);
 
-//free.c 4/5
+//free.c
 void	free_data(t_data *data);
 void	free_all(t_stack *stackA, t_stack *stackB);
 
-//list_crud.c 4/4
+//list_crud.c
 t_node	*ft_lstlast(t_node *lst);
 void	ft_lstadd_back(t_stack *stack, t_node *new);
 void	ft_lstadd_front(t_stack *stack, t_node *new);
 t_node	*ft_lstnew(int number);
 
-//moves_creator.c 5/5 swap.c can be moved
+//moves_creator.c
 void	moves_creator(t_stack *stackA, t_stack *stackB);
 
-//moves_init.c 4/5
+//moves_init.c
 t_move	*new_move(void);
 void	add_move_back(t_stack *stackA, t_move *move);
 void	update_moves(t_stack *stackA, char *ins);
 void	swap(int *arr, int i, int largest);
 
-//executor.c 2/5
+//executor.c
 void	exec(char *ins, t_stack *stackA, t_stack *stackB);
 
-//executor_helper.c 4/5
+//executor_helper.c
 void	reverse_rotate(t_stack *stackA);
 void	rotate_ra(t_stack *stackA);
 void	push_A_B(t_stack *stackA, t_stack *stackB);
 void	swap_A_B(t_stack *stackA);
 
-//create_hundred_moves 5/5
+//create_hundred_moves
 void	create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data);
 int		get_num_pos(t_stack *stack, int num);
 int		get_max_num(t_stack *stackA);
 int		get_max_pos(t_stack *stackA);
 void	get_holds(t_stack *stack, t_data *data, int i);
 
-//create_hundred_helperes 5/5
+//create_hundred_helperes
 void	cal_stackB_rot(t_stack *stackA, t_stack *stackB, int stop_num);
 void	cal_stackA_rot(t_stack *stackA, t_stack *stackB, t_data *data);
 void	adjust_stackB(t_stack *stackA, t_stack *stackB);
@@ -126,5 +126,8 @@ void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data);
 
 //partition.c
 void	create_chunks(t_stack *stackA, t_stack *stackB, t_data *d);
+
+//temp_print_function
+void	print_both(t_node *stackA, t_node *stackB);
 
 #endif
