@@ -33,37 +33,19 @@ void	move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int num_pos)
 	}
 }
 
-void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data)
+void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data, int j)
 {
-	int	i;
-	int	j;
 	int num_pos;
 
-	j = data->chunks_len - 1;
-	(void)stackB;
-	while (j >= 0)
+	num_pos = -1;
+	if (data->chunks_len > 1)
 	{
-		get_holds(stackA, data, j);
-		i = data->chunks[j]->length;
-		while (i > 0)
-		{
-			cal_stackA_rot(stackA, stackB, data);
-			adjust_stackB(stackA, stackB);
-			exec("PB", stackA, stackB);
-			get_holds(stackA, data, j);
-			i--;
-		}
-		num_pos = -1;
-		if (data->chunks_len > 1)
-		{
-			if (j != data->chunks_len - 1)
-				num_pos = get_num_pos(stackA, data->chunks[j + 1]->min);
-			else
-				num_pos = get_num_pos(stackA, stackA->node->number);
-		}
-		move_to_stackA(stackA, stackB, data, num_pos);
-		j--;
+		if (j != data->chunks_len - 1)
+			num_pos = get_num_pos(stackA, data->chunks[j + 1]->min);
+		else
+			num_pos = get_num_pos(stackA, stackA->node->number);
 	}
+	move_to_stackA(stackA, stackB, data, num_pos);
 }
 
 void	cal_stackA_rot(t_stack *stackA, t_stack *stackB, t_data *data)

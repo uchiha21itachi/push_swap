@@ -122,7 +122,7 @@ void	get_holds(t_stack *stack, t_data *data, int i);
 void	cal_stackB_rot(t_stack *stackA, t_stack *stackB, int stop_num);
 void	cal_stackA_rot(t_stack *stackA, t_stack *stackB, t_data *data);
 void	adjust_stackB(t_stack *stackA, t_stack *stackB);
-void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data);
+void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data, int j);
 
 //partition.c
 void	create_chunks(t_stack *stackA, t_stack *stackB, t_data *d);
