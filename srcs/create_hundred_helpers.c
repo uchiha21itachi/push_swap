@@ -12,15 +12,15 @@
 
 #include "../push_swap.h"
 
-void	move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int num_pos)
+void	move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int n)
 {
 	int	max;
-	int k;
+	int	k;
 
-	if (num_pos >= 0)
+	if (n >= 0)
 	{
-		data->hold_one_pos = num_pos;
-		data->hold_two_pos = num_pos;
+		data->hold_one_pos = n;
+		data->hold_two_pos = n;
 		cal_stackA_rot(stackA, stackB, data);
 	}
 	max = get_max_num(stackB);
@@ -35,7 +35,7 @@ void	move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int num_pos)
 
 void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data, int j)
 {
-	int num_pos;
+	int	num_pos;
 
 	num_pos = -1;
 	if (data->chunks_len > 1)

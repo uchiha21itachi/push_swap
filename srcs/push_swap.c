@@ -12,45 +12,6 @@
 
 #include "../push_swap.h"
 
-void	print_both(t_node *stackA, t_node *stackB)
-{
-	t_node	*tempA;
-	t_node	*tempB;
-	
-	tempA = stackA;
-	printf("--------------StackA--------------------\n");
-	while (tempA)
-	{
-		if (tempA->previous != NULL && tempA->next != NULL)
-			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", tempA->previous->number, tempA->number, tempA->next->number);
-		else if (tempA->previous == NULL && tempA->next != NULL)
-			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", tempA->previous, tempA->number, tempA->next->number);
-		else if (tempA->previous != NULL && tempA->next == NULL)
-			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", tempA->previous->number, tempA->number, tempA->next);
-		else if (tempA->previous == NULL && tempA->next == NULL)
-			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", tempA->previous, tempA->number, tempA->next);
-		tempA = tempA->next;
-	}
-
-	printf("--------------StackB--------------------\n");
-	tempB = stackB;
-	while (tempB)
-	{
-		if (tempB->previous != NULL && tempB->next != NULL)
-			printf("[%d]\t\t<---[%d]--->\t\t[%d]\n", tempB->previous->number, tempB->number, tempB->next->number);
-		else if (tempB->previous == NULL && tempB->next != NULL)
-			printf("[%p]\t\t<---[%d]--->\t\t[%d]\n", tempB->previous, tempB->number, tempB->next->number);
-		else if (tempB->previous != NULL && tempB->next == NULL)
-			printf("[%d]\t\t<---[%d]--->\t\t[%p]\n", tempB->previous->number, tempB->number, tempB->next);
-		else if (tempB->previous == NULL && tempB->next == NULL)
-			printf("[%p]\t\t<---[%d]--->\t\t[%p]\n", tempB->previous, tempB->number, tempB->next);
-		tempB = tempB->next;
-	}
-
-	printf("\n-----------------XXXXXXXXXXXXXXXXXXX----------------\n\n\n");
-}
-
-
 void	print_moves(t_move *move)
 {
 	t_move	*temp;

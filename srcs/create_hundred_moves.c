@@ -104,8 +104,8 @@ int	get_num_pos(t_stack *stack, int num)
 
 void	create_moves_hundred(t_stack *stackA, t_stack *stackB, t_data *data)
 {
-	int j;
-	int i;
+	int	j;
+	int	i;
 
 	if (stackA->length % data->chunks_div != 0)
 		data->chunks_len++;

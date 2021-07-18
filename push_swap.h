@@ -123,11 +123,9 @@ void	cal_stackB_rot(t_stack *stackA, t_stack *stackB, int stop_num);
 void	cal_stackA_rot(t_stack *stackA, t_stack *stackB, t_data *data);
 void	adjust_stackB(t_stack *stackA, t_stack *stackB);
 void	move_to_stackB(t_stack *stackA, t_stack *stackB, t_data *data, int j);
+void	move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int n);
 
 //partition.c
 void	create_chunks(t_stack *stackA, t_stack *stackB, t_data *d);
-
-//temp_print_function
-void	print_both(t_node *stackA, t_node *stackB);
 
 #endif
