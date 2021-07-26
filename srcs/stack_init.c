@@ -33,7 +33,7 @@ void	check_dup_number(int number, t_stack *stack)
 	while (node)
 	{
 		if (node->number == number)
-			stack->error = 2;
+			stack->error = 3;
 		node = node->next;
 	}
 }
@@ -59,7 +59,7 @@ void	check_args(char *temps, t_stack *stack)
 			temps++;
 		if (*temps != '\0')
 		{
-			number = ft_atoi(temps);
+			number = ft_atoi_err(temps, stack);
 			check_dup_number(number, stack);
 			temps = remove_space_digit(temps, 'b');
 			stack = insert_number(number, stack);

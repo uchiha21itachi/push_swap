@@ -59,33 +59,6 @@ char	*remove_space_digit(char *line, char c)
 	return (line);
 }
 
-int	ft_atoi(const char *str)
-{
-	int		sign;
-	int		result;
-
-	sign = 1;
-	result = 0;
-	while (ft_isspace_isdigit(*str, 's'))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*(str++) == '-')
-			sign *= -1;
-	}
-	while (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-		{
-			result *= 10;
-			result += (*(str++) - '0');
-		}
-		else
-			return (result * sign);
-	}
-	return (result * sign);
-}
-
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	int	x;
@@ -113,4 +86,46 @@ int	ft_toupper(int c)
 	if (c > 96 && c < 123)
 		return (c - 32);
 	return (c);
+}
+
+static	int	check_num(long num, int neg, t_stack *stack)
+{
+	if (neg > 0 && num > 2147483647)
+	{
+		stack->error = 2;
+		return (0);
+	}
+	else if (neg < 0 && num > 2147483648)
+	{
+		stack->error = 2;
+		return (0);
+	}
+	return (num * neg);
+}
+
+int			ft_atoi_err(const char *str, t_stack *stack)
+{
+	long	num;
+	int		neg;
+
+	num = 0;
+	neg = 1;
+
+	while (ft_isspace_isdigit(*str, 's'))
+		str++;
+	if (*str == 45 || *str == 43)
+	{
+		if (*str == 45)
+			neg = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		num = num * 10 + (*str - 48);
+		if (num > 21474836470)
+			break ;
+		str++;
+	}
+	num = check_num(num, neg, stack);
+	return (num);
 }

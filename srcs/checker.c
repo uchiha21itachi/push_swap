@@ -62,15 +62,13 @@ int	main(int argc, char **argv)
 	stackA = stack_init();
 	stackB = stack_init();
 	fill_stack(argc, argv, stackA);
-	if (stackA->length <= 0)
+	if (stackA->error != 0)
 	{
-		ft_putstr("Error in args\n");
+		ft_putstr("Error\n");
 		free_all(stackA, stackB);
 		return (1);
 	}
 	i = temp_caller(stackA, stackB);
-	if (stackA->error != 0)
-		i = -1;
 	free_all(stackA, stackB);
 	if (i == 0)
 		ft_putstr("KO\n");

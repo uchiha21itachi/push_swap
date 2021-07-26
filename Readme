@@ -15,28 +15,3 @@ length of stack and number of operations on average :
 100 == 833 (max 900) [874]
 
 500 == 7900 (max 8500) []
-
-
-
-
-
-
-Thanks to this article for tips
-https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
-
-/*
-    To change the size of chunks go to stack_init.c data_init();
-*/
-
-//testing case 
-
-1. 1000 cases for 3, 5, 10, 100, 399, 500 {OK or KO}
-2. 1500 cases for number of moves for 0, 1, 2, 3, 4, 5, 10, 100, 400, 500
-3. Memory leaks check for 
-    Args < 0, ./push_swap 
-    ARGS = IS_ALPHA, ./push_swap "19 29A i9 \c " 3 2 1
-    ARGS = 1, 2, 3, 4, 5, 10, 100, 400, 500, 1000 Numbers
-    ARGS = negative numbers
-    ARGS = repetitive numbers
-
-
