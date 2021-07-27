@@ -1,7 +1,7 @@
 NAME = push_swap.a
 NAME_B = checker.a
 CC = gcc  # C compiler
-CFLAGS = -Wall -Werror -Wextra -I.   # C flags
+CFLAGS = -Wall -Werror -Wextra -ggdb3 -I.   # C flags
 RM = rm -f   # rm command
 
 

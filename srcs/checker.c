@@ -12,6 +12,28 @@
 
 #include "../push_swap.h"
 
+int	check_valid_ins(char *str)
+{
+	char	*line;
+
+	line = str;
+	if (ft_strncmp(line, "RA", 3)
+		&& ft_strncmp(line, "RB", 3)
+		&& ft_strncmp(line, "RRA", 3)
+		&& ft_strncmp(line, "RRB", 3)
+		&& ft_strncmp(line, "RR", 3)
+		&& ft_strncmp(line, "RRR", 3)
+		&& ft_strncmp(line, "PA", 3)
+		&& ft_strncmp(line, "PB", 3)
+		&& ft_strncmp(line, "SB", 3)
+		&& ft_strncmp(line, "SA", 3)
+		&& ft_strncmp(line, "SS", 3))
+	{
+		return (-1);
+	}
+	return (0);
+}
+
 int	check_line(char	*line)
 {
 	int	i;
@@ -25,6 +47,9 @@ int	check_line(char	*line)
 		line[i] = ft_toupper(line[i]);
 		i++;
 	}
+	i = check_valid_ins(line);
+	if (i < 0)
+		return (0);
 	return (1);
 }
 
@@ -34,22 +59,23 @@ int	temp_caller(t_stack *stackA, t_stack *stackB)
 	char	*line;
 	int		ret;
 	int		sort;
+	int		i;
 
 	fd = 0;
 	sort = 0;
 	ret = get_next_line(fd, &line);
 	while (ret > 0)
 	{
-		if (check_line(line) != 1)
-		{
-			free(line);
-			return (-1);
-		}
+		i = check_line(line);
+		if (i != 1)
+			stackA->error = 3;
 		exec(line, stackA, stackB);
 		free(line);
 		ret = get_next_line(fd, &line);
 	}
 	free(line);
+	if (stackA->error > 0)
+		return (-1);
 	return (sort = check_sorted(stackA, stackB));
 }
 
@@ -82,7 +108,7 @@ int	main(int argc, char **argv)
 	{
 		free_all(stackA, stackB);
 		return (0);
-	}		
+	}
 	i = temp_caller(stackA, stackB);
 	free_all(stackA, stackB);
 	print_ret(i);
