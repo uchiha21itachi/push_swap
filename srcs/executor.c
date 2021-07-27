@@ -12,7 +12,6 @@
 
 #include "../push_swap.h"
 
-
 void	check_garbage(char c, t_stack *stack)
 {
 	if (c != '\0')

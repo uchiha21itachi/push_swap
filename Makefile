@@ -65,6 +65,5 @@ bclean:
 bre: bclean bonus
 
 cleanall: fclean bclean
-# I use .PHONY to make sure that gnu make will still run even if files called
-# clean / fclean / all and re already exist in the directory
+
 .PHONY: clean fclean all re bclean bonus bre cleanall
