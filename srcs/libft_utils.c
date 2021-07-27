@@ -81,13 +81,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (x);
 }
 
-int	ft_toupper(int c)
-{
-	if (c > 96 && c < 123)
-		return (c - 32);
-	return (c);
-}
-
 static	int	check_num(long num, int neg, t_stack *stack)
 {
 	if (neg > 0 && num > 2147483647)
@@ -118,6 +111,11 @@ int			ft_atoi_err(const char *str, t_stack *stack)
 		if (*str == 45)
 			neg = -1;
 		str++;
+	}
+	if (str[0] != '\0')
+	{
+		if (!(ft_isspace_isdigit(str[0], 'd')))
+			stack->error = 2;
 	}
 	while (*str >= '0' && *str <= '9')
 	{

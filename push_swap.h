@@ -71,17 +71,15 @@ int		check_sorted(t_stack *stackA, t_stack *stackB);
 void	ft_putstr(char *str);
 t_stack	*stack_init(void);
 void	ft_tolower(char *str);
+int		ft_toupper(int c);
 
 //stack_init.c
 void	fill_stack(int argc, char **argv, t_stack *stack);
 t_data	*data_init(t_stack *stackA);
 
 //libft_utils.c
-int		ft_toupper(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-// int		ft_atoi(const char *str);
 int		ft_atoi_err(const char *str, t_stack *stack);
-
 char	*remove_space_digit(char *line, char c);
 int		ft_isspace_isdigit(char c, char d);
 

@@ -68,6 +68,11 @@ int	main(int argc, char **argv)
 		free_all(stackA, stackB);
 		return (1);
 	}
+	if (stackA->length <= 0)
+	{
+		free_all(stackA, stackB);
+		return (0);	
+	}		
 	i = temp_caller(stackA, stackB);
 	free_all(stackA, stackB);
 	if (i == 0)
