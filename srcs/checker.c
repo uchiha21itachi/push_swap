@@ -53,6 +53,16 @@ int	temp_caller(t_stack *stackA, t_stack *stackB)
 	return (sort = check_sorted(stackA, stackB));
 }
 
+void	print_ret(int i)
+{
+	if (i == 0)
+		ft_putstr("KO\n");
+	else if (i < 0)
+		ft_putstr("Error\n");
+	else
+		ft_putstr("OK\n");
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stackA;
@@ -71,15 +81,10 @@ int	main(int argc, char **argv)
 	if (stackA->length <= 0)
 	{
 		free_all(stackA, stackB);
-		return (0);	
+		return (0);
 	}		
 	i = temp_caller(stackA, stackB);
 	free_all(stackA, stackB);
-	if (i == 0)
-		ft_putstr("KO\n");
-	else if (i < 0)
-		ft_putstr("Error\n");
-	else
-		ft_putstr("OK\n");
+	print_ret(i);	
 	return (1);
 }

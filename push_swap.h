@@ -127,5 +127,6 @@ void	move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int n);
 
 //partition.c
 void	create_chunks(t_stack *stackA, t_stack *stackB, t_data *d);
+void	check_garbage(char c, t_stack *stack);
 
 #endif

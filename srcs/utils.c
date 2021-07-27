@@ -26,6 +26,15 @@ t_stack	*stack_init(void)
 	return (stack);
 }
 
+void	check_garbage(char c, t_stack *stack)
+{
+	if (c != '\0')
+	{
+		if (!(ft_isspace_isdigit(c, 'd')))
+			stack->error = 2;
+	}
+}
+
 void	ft_putstr(char *str)
 {
 	int		len;

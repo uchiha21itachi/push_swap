@@ -96,14 +96,13 @@ static	int	check_num(long num, int neg, t_stack *stack)
 	return (num * neg);
 }
 
-int			ft_atoi_err(const char *str, t_stack *stack)
+int	ft_atoi_err(const char *str, t_stack *stack)
 {
 	long	num;
 	int		neg;
 
 	num = 0;
 	neg = 1;
-
 	while (ft_isspace_isdigit(*str, 's'))
 		str++;
 	if (*str == 45 || *str == 43)
@@ -112,11 +111,7 @@ int			ft_atoi_err(const char *str, t_stack *stack)
 			neg = -1;
 		str++;
 	}
-	if (str[0] != '\0')
-	{
-		if (!(ft_isspace_isdigit(str[0], 'd')))
-			stack->error = 2;
-	}
+	check_garbage(str[0], stack);
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str - 48);
