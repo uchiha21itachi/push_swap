@@ -12,6 +12,16 @@
 
 #include "../push_swap.h"
 
+
+void	check_garbage(char c, t_stack *stack)
+{
+	if (c != '\0')
+	{
+		if (!(ft_isspace_isdigit(c, 'd')))
+			stack->error = 2;
+	}
+}
+
 int	exec_helper(char *ins, t_stack *stackA, t_stack *stackB)
 {
 	if (!ft_strncmp(ins, "RRA", 3))

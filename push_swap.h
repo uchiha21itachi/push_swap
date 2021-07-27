@@ -104,6 +104,7 @@ void	swap(int *arr, int i, int largest);
 
 //executor.c
 void	exec(char *ins, t_stack *stackA, t_stack *stackB);
+void	check_garbage(char c, t_stack *stack);
 
 //executor_helper.c
 void	reverse_rotate(t_stack *stackA);
@@ -127,6 +128,5 @@ void	move_to_stackA(t_stack *stackA, t_stack *stackB, t_data *data, int n);
 
 //partition.c
 void	create_chunks(t_stack *stackA, t_stack *stackB, t_data *d);
-void	check_garbage(char c, t_stack *stack);
 
 #endif

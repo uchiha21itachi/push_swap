@@ -85,6 +85,6 @@ int	main(int argc, char **argv)
 	}		
 	i = temp_caller(stackA, stackB);
 	free_all(stackA, stackB);
-	print_ret(i);	
+	print_ret(i);
 	return (1);
 }
