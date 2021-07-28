@@ -77,6 +77,8 @@ void	fill_stack(int argc, char **argv, t_stack *stack)
 	args = ft_strdup("");
 	while (i < argc)
 	{
+		if (ft_strlen(argv[i]) == 0)
+			stack->error = 5;
 		temps = args;
 		args = ft_strjoin(temps, argv[i]);
 		free(temps);
