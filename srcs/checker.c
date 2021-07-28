@@ -59,21 +59,23 @@ int	temp_caller(t_stack *stackA, t_stack *stackB)
 	char	*line;
 	int		ret;
 	int		sort;
-	int		i;
 
 	fd = 0;
 	sort = 0;
 	ret = get_next_line(fd, &line);
 	while (ret > 0)
 	{
-		i = check_line(line);
-		if (i != 1)
+		if (check_line(line) != 1)
 			stackA->error = 3;
 		exec(line, stackA, stackB);
 		free(line);
-		ret = get_next_line(fd, &line);
+		if (stackA->error == 0)
+			ret = get_next_line(fd, &line);
+		else
+			ret = 0;
 	}
-	free(line);
+	if (stackA->error == 0)
+		free(line);
 	if (stackA->error > 0)
 		return (-1);
 	return (sort = check_sorted(stackA, stackB));

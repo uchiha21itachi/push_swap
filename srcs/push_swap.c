@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	fill_stack(argc, argv, stackA);
 	if (stackA->error == 0 && stackA->length > 0)
 		moves_creator(stackA, stackB);
-	else
+	else if (stackA->error != 0)
 		ft_putstr("Error in Args \n");
 	print_moves(stackA->moves);
 	free_all(stackA, stackB);
